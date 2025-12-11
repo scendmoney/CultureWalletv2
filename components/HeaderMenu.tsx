@@ -112,13 +112,13 @@ export function HeaderMenu() {
         <div className="relative">
           <button
             onClick={() => setOpen(v => !v)}
-            className="flex items-center gap-2 rounded-full bg-white/5 border border-white/10 px-3 py-1 hover:bg-white/10 transition-colors"
+            className="flex items-center gap-2 rounded-full bg-white/5 border border-white/10 px-3 py-1 hover:bg-white/10 transition-colors max-w-[180px]"
           >
-            <div className="w-6 h-6 rounded-full bg-gradient-to-br from-purple-500/30 to-white/10 border border-purple-500/30 flex items-center justify-center">
+            <div className="w-6 h-6 rounded-full bg-gradient-to-br from-purple-500/30 to-white/10 border border-purple-500/30 flex items-center justify-center flex-shrink-0">
               <UserIcon className="w-4 h-4 text-purple-400" />
             </div>
-            <span className="text-xs text-white/80">{displayName ?? 'Account'}</span>
-            <ChevronDown className={`w-4 h-4 text-white/50 transition-transform ${open ? 'rotate-180' : ''}`} />
+            <span className="text-xs text-white/80 truncate">{displayName ?? 'Account'}</span>
+            <ChevronDown className={`w-4 h-4 text-white/50 transition-transform flex-shrink-0 ${open ? 'rotate-180' : ''}`} />
           </button>
 
           {open && (
