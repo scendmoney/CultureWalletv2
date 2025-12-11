@@ -58,9 +58,9 @@ export default function OnboardingPage() {
                 
                 if (data?.hasCompletedOnboarding) {
                   // User has existing profile, redirect to app
-                  console.log('[Onboarding] ✅ Returning user detected, redirecting to contacts')
+                  console.log('[Onboarding] ✅ Returning user detected, redirecting to community')
                   setHasExistingProfile(true)
-                  router.push('/contacts')
+                  router.push('/community')
                   return
                 } else {
                   console.log('[Onboarding] ❌ hasCompletedOnboarding = false, showing onboarding')
@@ -286,8 +286,8 @@ export default function OnboardingPage() {
         description: 'You can now exchange recognitions with others'
       })
       
-      // Redirect to contacts
-      router.push('/contacts')
+      // Redirect to community
+      router.push('/community')
     } catch (error: any) {
       toast.error('Failed to create profile')
       console.error('Profile creation error:', error)
