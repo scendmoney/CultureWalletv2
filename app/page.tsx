@@ -179,76 +179,76 @@ export default function Home() {
           </div>
           
           <div className="grid lg:grid-cols-3 gap-8">
-            {/* Wallet Loop */}
-            <div className="bg-gradient-to-br from-[#1a1a1a] to-[#2a1a3a] border border-purple-600/40 rounded-2xl p-8 space-y-6">
-              <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-purple-700 to-purple-800 flex items-center justify-center">
-                <WalletIcon className="w-8 h-8 text-white" />
-              </div>
-              <div>
-                <h3 className="text-2xl font-bold text-white mb-2">Wallet</h3>
-                <p className="text-sm text-purple-600 mb-4">Connect socials, manage assets</p>
-                <ul className="space-y-3 text-sm text-zinc-400">
-                  <li className="flex items-start gap-2">
-                    <div className="w-1.5 h-1.5 rounded-full bg-purple-600 mt-1.5" />
-                    <span>TRST token balance & transactions</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <div className="w-1.5 h-1.5 rounded-full bg-purple-600 mt-1.5" />
-                    <span>Receive, send, and request value</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <div className="w-1.5 h-1.5 rounded-full bg-purple-600 mt-1.5" />
-                    <span>Activity feed of cultural contributions</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
             {/* Community Loop */}
             <div className="bg-gradient-to-br from-[#1a1a1a] to-[#2a1a3a] border border-emerald-600/30 rounded-2xl p-8 space-y-6">
               <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-emerald-600 to-pink-700 flex items-center justify-center">
-                <MessageCircle className="w-8 h-8 text-white" />
+                <Users className="w-8 h-8 text-white" />
               </div>
               <div>
                 <h3 className="text-2xl font-bold text-white mb-2">Community</h3>
-                <p className="text-sm text-yellow-500 mb-4">Secure communications + ledgering</p>
+                <p className="text-sm text-yellow-500 mb-4">Relationships, trust, and conversations</p>
                 <ul className="space-y-3 text-sm text-zinc-400">
+                  <li className="flex items-start gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-yellow-600 mt-1.5" />
+                    <span>Circle of 9 trusted contacts</span>
+                  </li>
                   <li className="flex items-start gap-2">
                     <div className="w-1.5 h-1.5 rounded-full bg-yellow-600 mt-1.5" />
                     <span>Encrypted XMTP messaging</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <div className="w-1.5 h-1.5 rounded-full bg-yellow-600 mt-1.5" />
-                    <span>Send value within conversations</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <div className="w-1.5 h-1.5 rounded-full bg-yellow-600 mt-1.5" />
-                    <span>Cultural graph connections</span>
+                    <span>Build your trust network</span>
                   </li>
                 </ul>
               </div>
             </div>
 
-            {/* Collectibles Loop */}
+            {/* Culture Loop */}
             <div className="bg-gradient-to-br from-[#1a1a1a] to-[#2a1a3a] border border-purple-600/40 rounded-2xl p-8 space-y-6">
               <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-purple-700 to-purple-800 flex items-center justify-center">
-                <Trophy className="w-8 h-8 text-white" />
+                <Sparkles className="w-8 h-8 text-white" />
               </div>
               <div>
-                <h3 className="text-2xl font-bold text-white mb-2">Collectibles</h3>
-                <p className="text-sm text-purple-600 mb-4">Payments, points, tokens, badges</p>
+                <h3 className="text-2xl font-bold text-white mb-2">Culture</h3>
+                <p className="text-sm text-purple-600 mb-4">Recognition, signals, and collectibles</p>
                 <ul className="space-y-3 text-sm text-zinc-400">
                   <li className="flex items-start gap-2">
                     <div className="w-1.5 h-1.5 rounded-full bg-purple-600 mt-1.5" />
-                    <span>GHHA membership NFTs</span>
+                    <span>Send and receive recognition signals</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <div className="w-1.5 h-1.5 rounded-full bg-purple-600 mt-1.5" />
-                    <span>Dynamic reputation scoring</span>
+                    <span>GHHA membership NFTs & badges</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <div className="w-1.5 h-1.5 rounded-full bg-purple-600 mt-1.5" />
-                    <span>Access exclusive drops & communities</span>
+                    <span>Boost cultural impact</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Wallet Loop */}
+            <div className="bg-gradient-to-br from-[#1a1a1a] to-[#2a1a3a] border border-yellow-600/30 rounded-2xl p-8 space-y-6">
+              <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-yellow-600 to-yellow-700 flex items-center justify-center">
+                <WalletIcon className="w-8 h-8 text-black" />
+              </div>
+              <div>
+                <h3 className="text-2xl font-bold text-white mb-2">Wallet</h3>
+                <p className="text-sm text-yellow-500 mb-4">TRST balance and payments</p>
+                <ul className="space-y-3 text-sm text-zinc-400">
+                  <li className="flex items-start gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-yellow-600 mt-1.5" />
+                    <span>TRST token balance & transactions</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-yellow-600 mt-1.5" />
+                    <span>Send, receive, and top up</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-yellow-600 mt-1.5" />
+                    <span>On-chain payment history</span>
                   </li>
                 </ul>
               </div>
@@ -378,7 +378,7 @@ export default function Home() {
             </p>
             <div className="flex items-center justify-center gap-4 pt-4">
               <Link
-                href="/contacts"
+                href="/community"
                 className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-purple-700 to-emerald-700 hover:from-purple-600 hover:to-pink-600 text-white font-bold text-lg transition-all transform hover:scale-105"
               >
                 <span>Enter the Culture</span>

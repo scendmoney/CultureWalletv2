@@ -151,11 +151,11 @@ export function ContactDrawer({ contactId, open, onOpenChange }: ContactDrawerPr
   const handleMessage = () => {
     if (!contact) return
     
-    // Navigate to messages page
+    // Navigate to community (messages section)
     // TODO: Pre-select conversation with this contact when XMTP integration is complete
-    router.push('/messages')
+    router.push('/community')
     onOpenChange(false)
-    toast.info(`Opening messages with ${contact.handle || 'contact'}`)
+    toast.info('XMTP messaging coming soon!')
   }
 
   const handleSendSignal = () => {

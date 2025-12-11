@@ -205,8 +205,9 @@ export default function CommunityPage() {
             </div>
           ) : filteredContacts.length === 0 ? (
             <div className="text-center py-8 text-white/60">
-              <p className="text-sm">No contacts found</p>
-              <p className="text-xs mt-2">Add contacts to get started</p>
+              <Users className="w-10 h-10 mx-auto mb-3 opacity-50" />
+              <p className="text-sm font-medium text-white">No contacts yet</p>
+              <p className="text-xs mt-2 text-white/60">Add people you trust to start building your Community</p>
             </div>
           ) : (
             <div className="space-y-2 max-h-96 overflow-y-auto">

@@ -135,8 +135,11 @@ export function RingOfNine({
       {/* Empty state message */}
       {filledSlots === 0 && (
         <div className="text-center mt-4">
-          <p className="text-sm text-white/60">
-            Add trusted contacts to build your inner circle
+          <p className="text-sm text-white/70 font-medium">
+            Your Circle of 9 is empty
+          </p>
+          <p className="text-xs text-white/50 mt-1">
+            Use trust in the Contact Drawer to add people you rely on most
           </p>
         </div>
       )}

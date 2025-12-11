@@ -151,9 +151,9 @@ export function RecognitionFeed({
     return (
       <div className="text-center py-12 bg-white/5 rounded-lg border border-white/10">
         <Sparkles className="w-12 h-12 text-[#7c3aed] mx-auto mb-4 opacity-50" />
-        <h3 className="text-lg font-semibold text-white mb-2">No Recognition Yet</h3>
+        <h3 className="text-lg font-semibold text-white mb-2">No signals yet</h3>
         <p className="text-sm text-white/60 max-w-sm mx-auto">
-          Start sending recognition signals to celebrate achievements and build trust
+          Send your first signal to celebrate achievements in your network
         </p>
       </div>
     )

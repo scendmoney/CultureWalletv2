@@ -46,16 +46,10 @@ export function MyCollectiblesSection() {
       {collectibles.length === 0 && (
         <div className="text-center py-8">
           <Sparkles className="w-12 h-12 text-yellow-600 mx-auto mb-4 opacity-50" />
-          <h4 className="text-sm font-semibold text-white mb-2">No Collectibles Yet</h4>
-          <p className="text-xs text-white/60 max-w-sm mx-auto mb-4">
-            Earn GHHA membership NFTs and recognition cards by building trust and sending signals
+          <h4 className="text-sm font-semibold text-white mb-2">No collectibles yet</h4>
+          <p className="text-xs text-white/60 max-w-sm mx-auto">
+            Your collectibles will appear here as you earn membership and recognition
           </p>
-          <Button
-            onClick={handleViewAll}
-            className="bg-yellow-600 hover:bg-yellow-700 text-black font-bold"
-          >
-            Explore Collections
-          </Button>
         </div>
       )}
 
