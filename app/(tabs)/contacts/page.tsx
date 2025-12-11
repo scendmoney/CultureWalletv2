@@ -159,14 +159,14 @@ export default function ContactsPage() {
     return (
       <div className="min-h-screen bg-gradient-to-br from-[#1a0a1f] via-[#2a1030] to-[#1a0a1f]">
         <div className="max-w-md mx-auto px-4 py-20 space-y-6 text-center">
-          <div className="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-orange-400/30 to-orange-500/20 flex items-center justify-center border border-orange-500/30">
-            <UserCheck className="w-10 h-10 text-orange-500" />
+          <div className="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-purple-800/30 to-purple-900/20 flex items-center justify-center border border-purple-700/30">
+            <UserCheck className="w-10 h-10 text-purple-400" />
           </div>
           <h2 className="text-2xl font-bold text-white">Sign in to view your contacts</h2>
           <p className="text-white/60">Connect with Magic to access your trusted network on the blockchain</p>
           <Button 
             onClick={() => window.location.href = '/'}
-            className="bg-gradient-to-r from-[#FF6B35] to-yellow-400 text-black hover:from-[#FF6B35]/90 hover:to-yellow-400/90"
+            className="bg-yellow-600 hover:bg-yellow-700 text-black font-bold shadow-lg hover:shadow-xl transition-all"
           >
             Sign in with Magic
           </Button>
@@ -216,15 +216,15 @@ export default function ContactsPage() {
       <div className="max-w-md mx-auto px-4 py-4 space-y-6">
 
       {/* Card 1: QR Contact Exchange - Network Growth Engine */}
-      <div className="sheen-sweep bg-gradient-to-br from-panel/90 to-panel/80 border-2 border-[#FF6B35]/20 shadow-[0_0_30px_rgba(255,107,53,0.15),0_0_60px_rgba(255,107,53,0.05)] rounded-lg p-4 relative overflow-hidden before:absolute before:inset-0 before:rounded-lg before:p-[1px] before:bg-gradient-to-r before:from-[#FF6B35]/20 before:via-transparent before:to-[#FF6B35]/20 before:-z-10 before:animate-pulse">
+      <div className="sheen-sweep bg-gradient-to-br from-panel/90 to-panel/80 border-2 border-[#7c3aed]/20 shadow-[0_0_30px_rgba(255,107,53,0.15),0_0_60px_rgba(255,107,53,0.05)] rounded-lg p-4 relative overflow-hidden before:absolute before:inset-0 before:rounded-lg before:p-[1px] before:bg-gradient-to-r before:from-[#7c3aed]/20 before:via-transparent before:to-[#7c3aed]/20 before:-z-10 before:animate-pulse">
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-yellow-400/30 to-yellow-500/20 flex items-center justify-center border border-orange-500/30">
-              <UserCheck className="w-5 h-5 text-orange-500" />
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-#ca8a04/30 to-#ca8a04/20 flex items-center justify-center border border-#10b981/30">
+              <UserCheck className="w-5 h-5 text-#10b981" />
             </div>
             <div>
               <h3 className="font-semibold text-white">Grow Your Trusted Network</h3>
-              <div className="text-xs text-orange-500 font-medium">Add professional contacts to increase your Trust Score!</div>
+              <div className="text-xs text-#10b981 font-medium">Add professional contacts to increase your Trust Score!</div>
             </div>
           </div>
         </div>
@@ -233,7 +233,7 @@ export default function ContactsPage() {
         </div>
         <div className="flex gap-2">
           <AddContactDialog>
-            <Button className="flex-1 h-9 text-sm font-medium bg-gradient-to-r from-[#FF6B35] to-yellow-400 text-black hover:from-[#FF6B35]/90 hover:to-yellow-400/90 active:scale-95 transition-all shadow-[0_0_20px_rgba(255,107,53,0.4),0_0_40px_rgba(255,107,53,0.2)] hover:shadow-[0_0_25px_rgba(255,107,53,0.5),0_0_50px_rgba(255,107,53,0.3)]">
+            <Button className="flex-1 h-9 text-sm font-medium bg-yellow-600 hover:bg-yellow-700 text-black font-bold shadow-lg hover:shadow-xl active:scale-95 transition-all">
               <QrCode className="w-4 h-4 mr-2" />
               QR Exchange
             </Button>
@@ -241,7 +241,7 @@ export default function ContactsPage() {
           <AddContactModal>
             <Button 
               variant="outline" 
-              className="border-orange-500/30 text-orange-500 hover:bg-emerald-500/20"
+              className="border-#10b981/30 text-#10b981 hover:bg-emerald-500/20"
               onClick={() => console.log('[ContactsPage] Invite button clicked')}
             >
               <UserPlus className="w-4 h-4 mr-1" />
@@ -252,15 +252,15 @@ export default function ContactsPage() {
       </div>
 
       {/* Card 2: Send Recognition Signal */}
-      <div className="sheen-sweep bg-gradient-to-br from-panel/90 to-panel/80 border-2 border-[#FF6B35]/20 shadow-[0_0_30px_rgba(255,107,53,0.15),0_0_60px_rgba(255,107,53,0.05)] rounded-lg p-4 relative overflow-hidden before:absolute before:inset-0 before:rounded-lg before:p-[1px] before:bg-gradient-to-r before:from-[#FF6B35]/20 before:via-transparent before:to-[#FF6B35]/20 before:-z-10 before:animate-pulse">
+      <div className="sheen-sweep bg-gradient-to-br from-panel/90 to-panel/80 border-2 border-[#7c3aed]/20 shadow-[0_0_30px_rgba(255,107,53,0.15),0_0_60px_rgba(255,107,53,0.05)] rounded-lg p-4 relative overflow-hidden before:absolute before:inset-0 before:rounded-lg before:p-[1px] before:bg-gradient-to-r before:from-[#7c3aed]/20 before:via-transparent before:to-[#7c3aed]/20 before:-z-10 before:animate-pulse">
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#FF6B35]/30 to-yellow-500/20 flex items-center justify-center border border-[#FF6B35]/30">
-              <Trophy className="w-5 h-5 text-[#FF6B35]" />
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#7c3aed]/30 to-#ca8a04/20 flex items-center justify-center border border-[#7c3aed]/30">
+              <Trophy className="w-5 h-5 text-[#7c3aed]" />
             </div>
             <div>
               <h3 className="font-semibold text-white">Send Recognition Signals to Peers</h3>
-              <div className="text-xs text-[#FF6B35] font-medium">Increases their trust score!</div>
+              <div className="text-xs text-[#7c3aed] font-medium">Increases their trust score!</div>
             </div>
           </div>
         </div>
@@ -283,7 +283,7 @@ export default function ContactsPage() {
         </div>
         <SendSignalsModal>
           <Button 
-            className="w-full h-12 text-base font-medium bg-gradient-to-r from-[#FF6B35] to-yellow-400 text-black hover:from-[#FF6B35]/90 hover:to-yellow-400/90 active:scale-95 transition-all shadow-[0_0_20px_rgba(255,107,53,0.4),0_0_40px_rgba(255,107,53,0.2)] hover:shadow-[0_0_25px_rgba(255,107,53,0.5),0_0_50px_rgba(255,107,53,0.3)]"
+            className="w-full h-12 text-base font-medium bg-yellow-600 hover:bg-yellow-700 text-black font-bold shadow-lg hover:shadow-xl active:scale-95 transition-all"
           >
             <Award className="w-5 h-5 mr-2" />
             Send Signal
@@ -302,7 +302,7 @@ export default function ContactsPage() {
             <Search className="absolute left-2 top-1/2 -translate-y-1/2 h-3 w-3 text-white/40" />
             <Input
               placeholder="Search contacts..."
-              className="pl-7 h-8 w-32 bg-white/5 border border-white/10 text-white placeholder:text-white/40 focus:border-[#FF6B35] text-xs rounded"
+              className="pl-7 h-8 w-32 bg-white/5 border border-white/10 text-white placeholder:text-white/40 focus:border-[#7c3aed] text-xs rounded"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
@@ -330,12 +330,12 @@ export default function ContactsPage() {
                 return (
                   <div
                     key={contactId}
-                    className="flex items-center justify-between p-3 bg-white/5 hover:bg-white/10 rounded-lg cursor-pointer transition-all border border-white/10 hover:border-[#FF6B35]/30"
+                    className="flex items-center justify-between p-3 bg-white/5 hover:bg-white/10 rounded-lg cursor-pointer transition-all border border-white/10 hover:border-[#7c3aed]/30"
                     onClick={() => handleContactClick(contact)}
                   >
                     <div className="flex items-center gap-3 flex-1">
-                      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#FF6B35]/20 to-yellow-500/20 border border-[#FF6B35]/30 flex items-center justify-center">
-                        <User className="w-5 h-5 text-[#FF6B35]" />
+                      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#7c3aed]/20 to-#ca8a04/20 border border-[#7c3aed]/30 flex items-center justify-center">
+                        <User className="w-5 h-5 text-[#7c3aed]" />
                       </div>
                       <div className="flex-1">
                         <div className="flex items-center gap-2">
@@ -365,14 +365,14 @@ export default function ContactsPage() {
                         </div>
                         <div className="text-xs">
                           {trustData.allocatedTo > 0 ? (
-                            <span className="text-orange-500 font-medium">Given: {trustData.allocatedTo} 🔥</span>
+                            <span className="text-#10b981 font-medium">Given: {trustData.allocatedTo} 🔥</span>
                           ) : (
                             <span className="text-white/60">Contact</span>
                           )}
                           {trustData.receivedFrom > 0 && (
                             <>
                               <span className="text-white/40 mx-1">•</span>
-                              <span className="text-[#FF6B35] font-medium">Received: {trustData.receivedFrom}</span>
+                              <span className="text-[#7c3aed] font-medium">Received: {trustData.receivedFrom}</span>
                             </>
                           )}
                           {trustData.allocatedTo === 0 && trustData.receivedFrom === 0 && (
@@ -385,7 +385,7 @@ export default function ContactsPage() {
                       <Button
                         size="sm"
                         variant="ghost"
-                        className="text-white/70 hover:text-[#FF6B35] hover:bg-[#FF6B35]/10"
+                        className="text-white/70 hover:text-[#7c3aed] hover:bg-[#7c3aed]/10"
                         onClick={(e) => {
                           e.stopPropagation()
                           toast.info(`Message ${displayName}`)

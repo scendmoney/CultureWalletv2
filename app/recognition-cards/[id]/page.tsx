@@ -137,11 +137,11 @@ export default function RecognitionDetailPage() {
           <h1 className="text-2xl font-bold text-white mb-2">Card Not Found</h1>
           <p className="text-purple-200 mb-6">The recognition card "{signalId}" doesn't exist.</p>
           <Button 
-            onClick={() => router.push('/collections')}
+            onClick={() => router.push('/recognition-cards')}
             className="bg-purple-600 hover:bg-purple-700"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to Collections
+            Back to Recognition Cards
           </Button>
         </div>
       </div>
@@ -263,11 +263,11 @@ export default function RecognitionDetailPage() {
             {/* Actions */}
             <div className="pt-4 border-t border-white/20">
               <Button
-                onClick={() => router.push('/collections')}
+                onClick={() => router.push('/recognition-cards')}
                 className="w-full bg-gradient-to-r from-purple-600 to-pink-600 md:hover:from-purple-700 md:hover:to-pink-700 text-white font-medium min-h-[48px]"
               >
                 <ExternalLink className="w-4 h-4 mr-2" />
-                View Full Collection
+                View All Recognition Cards
               </Button>
             </div>
           </div>

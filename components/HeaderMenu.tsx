@@ -78,28 +78,32 @@ export function HeaderMenu() {
   return (
     <div className="sticky top-0 z-50 bg-black/20 backdrop-blur-md supports-[backdrop-filter]:bg-black/10 border-b border-white/10">
       <div className="max-w-2xl mx-auto px-4 py-3 flex items-center justify-between">
-        {/* Left: TrustMesh logo and branding */}
+          {/* Left: CultureWallet logo and branding */}
         <div className="flex items-center gap-2">
-          {/* TrustMesh Logo */}
+          {/* CultureWallet Logo */}
           <div className="w-9 h-9 flex items-center justify-center opacity-90">
             <svg 
               width="24" 
               height="24"
               viewBox="0 0 24 24" 
               fill="none"
-              className="animate-spin-slow-ccw"
+              className="animate-pulse"
             >
-              <circle cx="6" cy="18" r="2" stroke="#FF6B35" strokeWidth="2" fill="none"/>
-              <circle cx="18" cy="18" r="2" stroke="#FF6B35" strokeWidth="2" fill="none"/>
-              <circle cx="12" cy="6" r="2" stroke="#FF6B35" strokeWidth="2" fill="none"/>
-              <path d="M6 18L12 6L18 18" stroke="#FF6B35" strokeWidth="2" opacity="0.6"/>
-              <path d="M6 18L18 18" stroke="#FF6B35" strokeWidth="2" opacity="0.6"/>
+              <circle cx="12" cy="12" r="10" stroke="url(#gradient)" strokeWidth="2" fill="none"/>
+              <path d="M12 6v12M6 12h12" stroke="url(#gradient)" strokeWidth="2" strokeLinecap="round"/>
+              <defs>
+                <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#a855f7" />
+                  <stop offset="50%" stopColor="#10b981" />
+                  <stop offset="100%" stopColor="#fbbf24" />
+                </linearGradient>
+              </defs>
             </svg>
           </div>
           <div>
-            <h1 className="font-bold text-xl text-white tracking-tight">TrustMesh</h1>
-            <p className="text-xs text-white/50 font-light">
-              Own Your Network
+            <h1 className="font-bold text-xl text-white tracking-tight">The Culture Wallet</h1>
+            <p className="text-xs text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-green-400 to-yellow-400 font-light">
+              Own the Culture
             </p>
           </div>
         </div>
@@ -110,8 +114,8 @@ export function HeaderMenu() {
             onClick={() => setOpen(v => !v)}
             className="flex items-center gap-2 rounded-full bg-white/5 border border-white/10 px-3 py-1 hover:bg-white/10 transition-colors"
           >
-            <div className="w-6 h-6 rounded-full bg-gradient-to-br from-[#FF6B35]/30 to-white/10 border border-[#FF6B35]/30 flex items-center justify-center">
-              <UserIcon className="w-4 h-4 text-[#FF6B35]" />
+            <div className="w-6 h-6 rounded-full bg-gradient-to-br from-purple-500/30 to-white/10 border border-purple-500/30 flex items-center justify-center">
+              <UserIcon className="w-4 h-4 text-purple-400" />
             </div>
             <span className="text-xs text-white/80">{displayName ?? 'Account'}</span>
             <ChevronDown className={`w-4 h-4 text-white/50 transition-transform ${open ? 'rotate-180' : ''}`} />

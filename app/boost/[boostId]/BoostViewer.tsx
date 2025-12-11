@@ -179,11 +179,11 @@ export function BoostViewer({ boostId }: BoostViewerProps) {
         {/* Collection Actions */}
         <div className="flex flex-col gap-4 sm:flex-row sm:gap-4 justify-center mb-6 sm:mb-8 mt-6 sm:mt-8 px-4">
           <button
-            onClick={() => window.open('/collections', '_blank')}
+            onClick={() => window.open('/recognition-cards', '_blank')}
             className="flex items-center justify-center gap-2 px-8 py-4 sm:px-6 sm:py-3 min-h-[48px] bg-white/20 md:hover:bg-white/30 rounded-full text-white font-medium transition-all md:hover:scale-105 border border-white/30 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 active:scale-95 text-base sm:text-sm"
           >
             <Users className="h-5 w-5" />
-            Browse Collection
+            Browse Recognition Cards
           </button>
           
           <button

@@ -17,7 +17,8 @@ import {
   Circle, 
   Activity, 
   Users,
-  MessageCircle
+  MessageCircle,
+  Zap
 } from "lucide-react"
 
 export default function TabsLayout({
@@ -77,7 +78,7 @@ export default function TabsLayout({
     }
   }, [])
 
-  // GenZ navigation order: Friends → Circle → Signals → Messages
+  // CultureWallet navigation: Friends → Circle → Signals → Messages → Boost
   const tabs = [
     {
       id: "contacts",
@@ -110,6 +111,14 @@ export default function TabsLayout({
       icon: MessageCircle,
       badge: null,
       description: "Direct messaging"
+    },
+    {
+      id: "boost",
+      label: "Boost",
+      path: "/boost",
+      icon: Zap,
+      badge: null,
+      description: "Boost signals"
     }
   ]
 
@@ -129,26 +138,28 @@ export default function TabsLayout({
           {children}
         </main>
 
-        {/* Professional Theme CSS Injection */}
+        {/* CultureWallet Theme CSS Injection */}
         <style jsx global>{`
         .theme-professional {
-          --accent-primary: #FF6B35;
-          --bg-glass: rgba(30, 41, 59, 0.3);
-          --border-glow: 0 0 4px rgba(255, 107, 53, 0.3);
+          --accent-primary: #7c3aed;
+          --accent-secondary: #10b981;
+          --accent-tertiary: #ca8a04;
+          --bg-glass: rgba(55, 17, 89, 0.3);
+          --border-glow: 0 0 4px rgba(124, 58, 237, 0.4);
         }
         
         .pulse-accent {
-          animation: pulse-neon 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+          animation: pulse-culture 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
         }
         
-        @keyframes pulse-neon {
+        @keyframes pulse-culture {
           0%, 100% {
             opacity: 1;
-            filter: drop-shadow(0 0 2px rgba(255, 107, 53, 0.3));
+            filter: drop-shadow(0 0 2px rgba(124, 58, 237, 0.4));
           }
           50% {
-            opacity: 0.7;
-            filter: drop-shadow(0 0 4px rgba(255, 107, 53, 0.5));
+            opacity: 0.8;
+            filter: drop-shadow(0 0 6px rgba(16, 185, 129, 0.6));
           }
         }
         

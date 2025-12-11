@@ -1,22 +1,26 @@
 'use client';
 
 import Link from "next/link";
-import { ArrowRight, Shield, Zap, Users, Code2, Globe, Rocket, MessageCircle, Lock, Send } from "lucide-react";
+import { ArrowRight, Shield, Zap, Users, Wallet as WalletIcon, Trophy, MessageCircle, Sparkles } from "lucide-react";
 import { MagicLogin } from '@/components/MagicLogin';
-import { Button } from "@/components/ui/button";
 import { VideoThumbnail } from "@/components/VideoModal";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#0a0a0a] text-white">
+    <main className="min-h-screen bg-gradient-to-br from-[#0a0a0a] via-[#1a0a2e] to-[#0a0a0a] text-white">
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-black/50 backdrop-blur-xl border-b border-white/5">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-black/50 backdrop-blur-xl border-b border-purple-700/20">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="flex items-center justify-between h-16">
-            <div className="text-lg font-light tracking-tight">TrustMesh</div>
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-purple-700 to-purple-800 flex items-center justify-center">
+                <Shield className="w-5 h-5 text-white" />
+              </div>
+              <div className="text-lg font-medium tracking-tight">The Culture Wallet</div>
+            </div>
             <div className="flex items-center gap-8">
-              <Link href="/signals" className="text-sm text-zinc-400 hover:text-white transition-colors">Demo</Link>
-              <a href="https://scend.cash" target="_blank" rel="noopener" className="text-sm text-zinc-400 hover:text-white transition-colors">Scend</a>
+              <a href="https://scend.cash" target="_blank" rel="noopener" className="text-sm text-zinc-400 hover:text-purple-600 transition-colors">Scend</a>
+              <a href="https://twitter.com/tonycamero" target="_blank" rel="noopener" className="text-sm text-zinc-400 hover:text-purple-600 transition-colors">@tonycamero</a>
             </div>
           </div>
         </div>
@@ -30,99 +34,104 @@ export default function Home() {
             {/* Left: Value Prop */}
             <div className="space-y-8">
               <div className="space-y-4">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#10b981]/10 border border-[#10b981]/20 mb-4">
-                  <div className="w-2 h-2 rounded-full bg-[#10b981] animate-pulse" />
-                  <span className="text-xs font-medium text-[#10b981]">Hedera Africa Hackathon 2025</span>
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-700/20 border border-purple-700/30 mb-4">
+                  <div className="w-2 h-2 rounded-full bg-purple-600 animate-pulse" />
+                  <span className="text-xs font-medium text-purple-600">Summer 2026 · Las Vegas Launch</span>
                 </div>
-                <h1 className="text-5xl lg:text-6xl font-light tracking-tight leading-[1.1]">
-                  TrustMesh
+                <h1 className="text-5xl lg:text-7xl font-bold tracking-tight leading-[1.1]">
+                  Own the Culture.
                   <br />
-                  <span className="text-[#10b981] font-normal">Programmable Trust Infrastructure</span>
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-700 to-emerald-700">Move the Culture.</span>
                 </h1>
-                <p className="text-xl text-zinc-400 leading-relaxed">
-                  A hackathon prototype exploring portable reputation, anonymous trust staking, and verifiable credibility on Hedera.
+                <p className="text-xl text-zinc-300 leading-relaxed">
+                  A next-gen identity + asset layer for culture. Part digital wallet, part social graph, part reputation score.
                 </p>
               </div>
 
               {/* Proof Points */}
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-full bg-[#10b981]/10 flex items-center justify-center flex-shrink-0 mt-1">
-                    <Shield className="w-5 h-5 text-[#10b981]" />
+                  <div className="w-10 h-10 rounded-full bg-purple-700/20 flex items-center justify-center flex-shrink-0 mt-1">
+                    <Sparkles className="w-5 h-5 text-purple-600" />
                   </div>
                   <div>
-                    <div className="text-base font-medium text-white">Proof of Character</div>
-                    <div className="text-sm text-zinc-500 mt-0.5">Trust scores backed by immutable on-chain signals</div>
+                    <div className="text-base font-medium text-white">Track your cultural contributions</div>
+                    <div className="text-sm text-zinc-400 mt-0.5">Build equity with every repost, remix, or drop</div>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-full bg-[#fbbf24]/10 flex items-center justify-center flex-shrink-0 mt-1">
-                    <Zap className="w-5 h-5 text-[#fbbf24]" />
+                  <div className="w-10 h-10 rounded-full bg-emerald-600/10 flex items-center justify-center flex-shrink-0 mt-1">
+                    <Trophy className="w-5 h-5 text-yellow-500" />
                   </div>
                   <div>
-                    <div className="text-base font-medium text-white">Composable Infrastructure</div>
-                    <div className="text-sm text-zinc-500 mt-0.5">Works with Scend, CraftTrust, and any commerce layer</div>
+                    <div className="text-base font-medium text-white">Get rewarded, ranked, and represented</div>
+                    <div className="text-sm text-zinc-400 mt-0.5">Culture = currency. Prove your impact in the ecosystem</div>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-full bg-[#10b981]/10 flex items-center justify-center flex-shrink-0 mt-1">
-                    <Users className="w-5 h-5 text-[#10b981]" />
+                  <div className="w-10 h-10 rounded-full bg-purple-700/20 flex items-center justify-center flex-shrink-0 mt-1">
+                    <Users className="w-5 h-5 text-purple-600" />
                   </div>
                   <div>
-                    <div className="text-base font-medium text-white">Network Effects</div>
-                    <div className="text-sm text-zinc-500 mt-0.5">Every signal strengthens the mesh. Trust compounds.</div>
+                    <div className="text-base font-medium text-white">Use your influence</div>
+                    <div className="text-sm text-zinc-400 mt-0.5">Access exclusive drops, communities, and opportunities</div>
                   </div>
                 </div>
               </div>
 
               {/* Footer Micro-copy */}
-              <div className="pt-8 border-t border-white/5">
-                <p className="text-sm text-zinc-600">
-                  Built on <span className="text-[#10b981]">Hedera HCS</span> · Infrastructure by <a href="https://scend.cash" target="_blank" rel="noopener" className="text-[#fbbf24] hover:text-[#fbbf24]/80 transition-colors">Scend</a>
+              <div className="pt-8 border-t border-purple-700/20">
+                <p className="text-sm text-zinc-500">
+                  Built on <span className="text-purple-600">Hedera</span> · Powered by <a href="https://scend.cash" target="_blank" rel="noopener" className="text-purple-600 hover:text-purple-300 transition-colors">Scend</a> · Supported by <span className="text-purple-600">GHHA</span>
                 </p>
               </div>
             </div>
 
-            {/* Right: Magenta Portal (CTA) */}
+            {/* Right: Login Portal */}
             <div className="relative">
-              <div className="absolute -inset-4 bg-gradient-to-br from-[#ec4899]/20 to-[#8b5cf6]/20 blur-3xl" />
-              <div className="relative bg-[#1a1a1a] border border-[#ec4899]/20 rounded-2xl p-8 shadow-2xl">
+              <div className="absolute -inset-4 bg-gradient-to-br from-purple-700/30 to-emerald-700/20 blur-3xl" />
+              <div className="relative bg-gradient-to-br from-[#1a1a1a] to-[#2a1a3a] border border-purple-600/40 rounded-2xl p-8 shadow-2xl">
                 <div className="space-y-6">
                   <div className="space-y-2">
-                    <h2 className="text-2xl font-medium text-white">Try Our Hackathon Entry</h2>
-                    <p className="text-sm text-zinc-400">
-                      Explore the prototype. Works on localhost and testnet.
+                    <div className="flex items-center gap-2 mb-4">
+                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-purple-700 to-purple-800 flex items-center justify-center">
+                        <Shield className="w-6 h-6 text-white" />
+                      </div>
+                      <h2 className="text-2xl font-bold text-white">The Culture Wallet</h2>
+                    </div>
+                    <p className="text-sm text-zinc-300">
+                      Enter the culture. Connect your identity and start building your ledger.
                     </p>
-                  </div>
-
-                  {/* Video Thumbnail */}
-                  <div className="flex justify-center">
-                    <VideoThumbnail
-                      title="TrustMesh"
-                      videoSrc="/videos/trustmesh-promo.mp4"
-                      thumbnailSrc="/thumbnails/trustmesh-thumb.jpg"
-                    />
                   </div>
 
                   {/* Magic Login Form */}
                   <MagicLogin />
 
-
                   {/* Stats */}
-                  <div className="grid grid-cols-3 gap-4 pt-6 border-t border-white/5">
+                  <div className="grid grid-cols-3 gap-4 pt-6 border-t border-purple-700/30">
                     <div className="text-center">
-                      <div className="text-2xl font-medium text-[#10b981]">135</div>
-                      <div className="text-xs text-zinc-500 mt-1">Free Signals</div>
+                      <div className="text-2xl font-bold text-purple-600">∞</div>
+                      <div className="text-xs text-zinc-400 mt-1">Collections</div>
                     </div>
                     <div className="text-center">
-                      <div className="text-2xl font-medium text-[#fbbf24]">∞</div>
-                      <div className="text-xs text-zinc-500 mt-1">Trust Graph</div>
+                      <div className="text-2xl font-bold text-yellow-500">TRST</div>
+                      <div className="text-xs text-zinc-400 mt-1">Token</div>
                     </div>
                     <div className="text-center">
-                      <div className="text-2xl font-medium text-[#ec4899]">Web3</div>
-                      <div className="text-xs text-zinc-500 mt-1">Native</div>
+                      <div className="text-2xl font-bold text-purple-600">Web3</div>
+                      <div className="text-xs text-zinc-400 mt-1">Native</div>
+                    </div>
+                  </div>
+
+                  {/* Partnership Logos */}
+                  <div className="pt-4 border-t border-purple-700/30">
+                    <p className="text-xs text-zinc-500 text-center mb-3">Powered by</p>
+                    <div className="flex items-center justify-center gap-4 text-xs text-zinc-600">
+                      <span className="px-3 py-1 rounded-full bg-purple-600/5 border border-purple-700/30">Hedera</span>
+                      <span className="px-3 py-1 rounded-full bg-purple-600/5 border border-purple-700/30">Scend</span>
+                      <span className="px-3 py-1 rounded-full bg-purple-600/5 border border-purple-700/30">GHHA</span>
                     </div>
                   </div>
                 </div>
@@ -133,340 +142,264 @@ export default function Home() {
         </div>
       </div>
 
-      {/* XMTP Messaging Feature */}
-      <div className="border-t border-white/5 bg-gradient-to-b from-black to-[#0a0a0a]">
+      {/* The Problem Section */}
+      <div className="border-t border-purple-700/20 bg-gradient-to-b from-[#0a0a0a] via-[#1a0a2e] to-[#0a0a0a]">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12 py-24">
+          <div className="max-w-4xl mx-auto text-center space-y-8">
+            <h2 className="text-4xl lg:text-6xl font-bold tracking-tight">
+              The Problem
+            </h2>
+            <p className="text-2xl text-zinc-300 leading-relaxed italic">
+              "Culture drives commerce — but creators, communities, and collectors still don't own their impact."
+            </p>
+            <div className="grid md:grid-cols-3 gap-6 pt-8">
+              <div className="bg-gradient-to-br from-purple-700/5 to-purple-800/20 border border-purple-700/30 rounded-xl p-6">
+                <div className="text-purple-600 font-medium mb-2">Brands extract value</div>
+                <div className="text-sm text-zinc-400">Culture receives crumbs</div>
+              </div>
+              <div className="bg-gradient-to-br from-emerald-600/5 to-emerald-700/10 border border-emerald-600/20 rounded-xl p-6">
+                <div className="text-yellow-500 font-medium mb-2">No central ledger</div>
+                <div className="text-sm text-zinc-400">Cultural value is invisible</div>
+              </div>
+              <div className="bg-gradient-to-br from-purple-700/5 to-purple-800/20 border border-purple-700/30 rounded-xl p-6">
+                <div className="text-purple-600 font-medium mb-2">Gen Z & Alpha want alignment</div>
+                <div className="text-sm text-zinc-400">Not just content</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* How It Works - 3 Loops */}
+      <div className="border-t border-purple-700/20">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12 py-24">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl lg:text-6xl font-bold tracking-tight mb-4">How It Works</h2>
+            <p className="text-xl text-zinc-400">Three integrated loops to own and move the culture</p>
+          </div>
+          
+          <div className="grid lg:grid-cols-3 gap-8">
+            {/* Wallet Loop */}
+            <div className="bg-gradient-to-br from-[#1a1a1a] to-[#2a1a3a] border border-purple-600/40 rounded-2xl p-8 space-y-6">
+              <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-purple-700 to-purple-800 flex items-center justify-center">
+                <WalletIcon className="w-8 h-8 text-white" />
+              </div>
+              <div>
+                <h3 className="text-2xl font-bold text-white mb-2">Wallet</h3>
+                <p className="text-sm text-purple-600 mb-4">Connect socials, manage assets</p>
+                <ul className="space-y-3 text-sm text-zinc-400">
+                  <li className="flex items-start gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-purple-600 mt-1.5" />
+                    <span>TRST token balance & transactions</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-purple-600 mt-1.5" />
+                    <span>Receive, send, and request value</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-purple-600 mt-1.5" />
+                    <span>Activity feed of cultural contributions</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Community Loop */}
+            <div className="bg-gradient-to-br from-[#1a1a1a] to-[#2a1a3a] border border-emerald-600/30 rounded-2xl p-8 space-y-6">
+              <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-emerald-600 to-pink-700 flex items-center justify-center">
+                <MessageCircle className="w-8 h-8 text-white" />
+              </div>
+              <div>
+                <h3 className="text-2xl font-bold text-white mb-2">Community</h3>
+                <p className="text-sm text-yellow-500 mb-4">Secure communications + ledgering</p>
+                <ul className="space-y-3 text-sm text-zinc-400">
+                  <li className="flex items-start gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-yellow-600 mt-1.5" />
+                    <span>Encrypted XMTP messaging</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-yellow-600 mt-1.5" />
+                    <span>Send value within conversations</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-yellow-600 mt-1.5" />
+                    <span>Cultural graph connections</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Collectibles Loop */}
+            <div className="bg-gradient-to-br from-[#1a1a1a] to-[#2a1a3a] border border-purple-600/40 rounded-2xl p-8 space-y-6">
+              <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-purple-700 to-purple-800 flex items-center justify-center">
+                <Trophy className="w-8 h-8 text-white" />
+              </div>
+              <div>
+                <h3 className="text-2xl font-bold text-white mb-2">Collectibles</h3>
+                <p className="text-sm text-purple-600 mb-4">Payments, points, tokens, badges</p>
+                <ul className="space-y-3 text-sm text-zinc-400">
+                  <li className="flex items-start gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-purple-600 mt-1.5" />
+                    <span>GHHA membership NFTs</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-purple-600 mt-1.5" />
+                    <span>Dynamic reputation scoring</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-purple-600 mt-1.5" />
+                    <span>Access exclusive drops & communities</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Use Cases Section */}
+      <div className="border-t border-purple-700/20 bg-gradient-to-b from-[#0a0a0a] via-[#1a0a2e] to-[#0a0a0a]">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12 py-24">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl lg:text-6xl font-bold tracking-tight mb-4">Use Cases</h2>
+            <p className="text-xl text-zinc-400">Culture deserves a ledger. The Culture Wallet is it.</p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="space-y-4">
+              <div className="aspect-video bg-gradient-to-br from-purple-700/30 to-purple-800/20 border border-purple-600/40 rounded-xl flex items-center justify-center">
+                <Sparkles className="w-12 h-12 text-purple-600" />
+              </div>
+              <div>
+                <div className="text-lg font-bold text-white mb-2">Artists & Collectives</div>
+                <div className="text-sm text-zinc-400">Prove influence and impact in the cultural ecosystem</div>
+              </div>
+            </div>
+
+            <div className="space-y-4">
+              <div className="aspect-video bg-gradient-to-br from-emerald-600/20 to-pink-700/20 border border-emerald-600/30 rounded-xl flex items-center justify-center">
+                <Users className="w-12 h-12 text-yellow-500" />
+              </div>
+              <div>
+                <div className="text-lg font-bold text-white mb-2">Fans</div>
+                <div className="text-sm text-zinc-400">Earn clout by promoting early and supporting creators</div>
+              </div>
+            </div>
+
+            <div className="space-y-4">
+              <div className="aspect-video bg-gradient-to-br from-purple-700/30 to-purple-800/20 border border-purple-600/40 rounded-xl flex items-center justify-center">
+                <Zap className="w-12 h-12 text-purple-600" />
+              </div>
+              <div>
+                <div className="text-lg font-bold text-white mb-2">Brands</div>
+                <div className="text-sm text-zinc-400">Activate authentic ambassadors with proven cultural capital</div>
+              </div>
+            </div>
+
+            <div className="space-y-4">
+              <div className="aspect-video bg-gradient-to-br from-emerald-600/20 to-pink-700/20 border border-emerald-600/30 rounded-xl flex items-center justify-center">
+                <Trophy className="w-12 h-12 text-yellow-500" />
+              </div>
+              <div>
+                <div className="text-lg font-bold text-white mb-2">Cultural Institutions</div>
+                <div className="text-sm text-zinc-400">Track lineage + impact across cultural movements</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Tech/IP Edge Section */}
+      <div className="border-t border-purple-700/20">
         <div className="max-w-7xl mx-auto px-6 lg:px-12 py-24">
           <div className="grid lg:grid-cols-[1fr_1.2fr] gap-16 items-center">
             
-            {/* Left: Feature Description */}
+            {/* Left: Tech Points */}
             <div className="space-y-6">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20">
-                <Lock className="w-3 h-3 text-purple-400" />
-                <span className="text-xs font-medium text-purple-400">End-to-End Encrypted</span>
-              </div>
-              <h2 className="text-4xl lg:text-5xl font-light tracking-tight">
-                Private Messaging.
+              <h2 className="text-4xl lg:text-5xl font-bold tracking-tight">
+                We're not building another rewards app.
                 <br />
-                <span className="text-purple-400">Decentralized by Default.</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-700 to-emerald-700">We're minting the next social protocol.</span>
               </h2>
               <p className="text-lg text-zinc-400 leading-relaxed">
-                Send encrypted messages and value (TRST/USD) to trusted contacts. Built on XMTP protocol—your conversations live on Web3, not in corporate databases.
+                Powered by Hedera's enterprise-grade blockchain, CultureWallet combines cultural graph engines, dynamic reputation scoring, and privacy-first architecture.
               </p>
-              <div className="flex flex-wrap gap-3 pt-4">
-                <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#10b981]/5 border border-[#10b981]/20">
-                  <div className="w-2 h-2 rounded-full bg-[#10b981]" />
-                  <span className="text-sm text-zinc-400">Online Status</span>
-                </div>
-                <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-purple-500/5 border border-purple-500/20">
-                  <Lock className="w-3 h-3 text-purple-400" />
-                  <span className="text-sm text-zinc-400">E2EE Protocol</span>
-                </div>
-                <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#fbbf24]/5 border border-[#fbbf24]/20">
-                  <Zap className="w-3 h-3 text-[#fbbf24]" />
-                  <span className="text-sm text-zinc-400">Send TRST/USD</span>
-                </div>
-              </div>
             </div>
 
-            {/* Right: Mock XMTP Card (Pops) */}
-            <div className="relative">
-              <div className="absolute -inset-8 bg-gradient-to-br from-purple-500/20 via-[#ec4899]/20 to-[#10b981]/20 blur-3xl opacity-60" />
-              <div className="relative">
-                <div className="bg-gradient-to-br from-[#1a1a1a] to-[#0f0f0f] border border-purple-500/30 rounded-2xl p-8 shadow-2xl">
-                  {/* Contact Header */}
-                  <div className="flex items-center gap-4 pb-6 border-b border-white/10">
-                    <div className="relative">
-                      <div className="w-14 h-14 rounded-full bg-gradient-to-br from-purple-500/20 to-[#ec4899]/20 flex items-center justify-center">
-                        <Users className="w-7 h-7 text-purple-400" />
-                      </div>
-                      <div className="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-[#10b981] border-2 border-[#1a1a1a]" />
-                    </div>
-                    <div className="flex-1">
-                      <div className="text-lg font-medium text-white">Trusted Contact</div>
-                      <div className="flex items-center gap-2 text-sm text-[#10b981]">
-                        <div className="w-1.5 h-1.5 rounded-full bg-[#10b981] animate-pulse" />
-                        <span>Online</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Message Preview */}
-                  <div className="py-6 space-y-4">
-                    <div className="flex gap-3">
-                      <div className="w-8 h-8 rounded-full bg-zinc-800 flex-shrink-0" />
-                      <div className="bg-zinc-800/50 rounded-2xl rounded-tl-sm px-4 py-3 max-w-[70%]">
-                        <p className="text-sm text-zinc-300">Hey! Ready to collaborate?</p>
-                      </div>
-                    </div>
-                    <div className="flex gap-3 justify-end">
-                      <div className="bg-purple-500/20 border border-purple-500/30 rounded-2xl rounded-tr-sm px-4 py-3 max-w-[70%]">
-                        <p className="text-sm text-white">Absolutely. Let's build trust.</p>
-                      </div>
-                      <div className="w-8 h-8 rounded-full bg-gradient-to-br from-purple-500/20 to-[#ec4899]/20 flex-shrink-0" />
-                    </div>
-                  </div>
-
-                  {/* Action Buttons */}
-                  <div className="pt-6 border-t border-white/10 space-y-3">
-                    <button className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-purple-500 hover:bg-purple-500/90 text-white font-medium transition-colors">
-                      <MessageCircle className="w-4 h-4" />
-                      <span>Send Encrypted Message</span>
-                    </button>
-                    <div className="grid grid-cols-2 gap-3">
-                      <button className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-[#10b981]/10 border border-[#10b981]/20 hover:bg-[#10b981]/20 text-[#10b981] text-sm font-medium transition-colors">
-                        <Zap className="w-3.5 h-3.5" />
-                        <span>Send TRST</span>
-                      </button>
-                      <button className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-[#fbbf24]/10 border border-[#fbbf24]/20 hover:bg-[#fbbf24]/20 text-[#fbbf24] text-sm font-medium transition-colors">
-                        <Send className="w-3.5 h-3.5" />
-                        <span>Send USD</span>
-                      </button>
-                    </div>
-                  </div>
-
-                  {/* Footer Note */}
-                  <div className="mt-6 pt-4 border-t border-white/5 text-center">
-                    <p className="text-xs text-zinc-600">
-                      <Lock className="w-3 h-3 inline mr-1" />
-                      Powered by XMTP · Your keys, your data
-                    </p>
-                  </div>
+            {/* Right: Tech Features Grid */}
+            <div className="grid grid-cols-2 gap-4">
+              <div className="bg-gradient-to-br from-purple-700/20 to-purple-500/5 border border-purple-600/40 rounded-xl p-6">
+                <div className="w-10 h-10 rounded-lg bg-purple-700/30 flex items-center justify-center mb-4">
+                  <Sparkles className="w-5 h-5 text-purple-600" />
                 </div>
+                <div className="text-sm font-medium text-white mb-1">Cultural graph engine</div>
+                <div className="text-xs text-zinc-500">Map influence and impact across movements</div>
               </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-
-      {/* Circle of Trust Section */}
-      <div className="border-t border-white/5">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 py-24">
-          <div className="grid lg:grid-cols-[1.2fr_1fr] gap-16 items-center">
-            
-            {/* Left: Circle Visualization */}
-            <div className="relative">
-              <div className="absolute -inset-4 bg-gradient-to-br from-[#10b981]/20 to-[#fbbf24]/20 blur-3xl opacity-50" />
-              <div className="relative bg-gradient-to-br from-[#1a1a1a] to-[#0f0f0f] border border-[#10b981]/30 rounded-2xl p-12">
-                {/* Circle of 9 */}
-                <div className="relative w-full aspect-square max-w-sm mx-auto">
-                  {/* Center (You) */}
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
-                    <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#10b981] to-[#fbbf24] flex items-center justify-center shadow-lg">
-                      <Shield className="w-8 h-8 text-white" />
-                    </div>
-                    <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 text-xs font-medium text-white whitespace-nowrap">You</div>
-                  </div>
-                  
-                  {/* Circle Members (8 positions) */}
-                  {[0, 1, 2, 3, 4, 5, 6, 7].map((i) => {
-                    const angle = (i * 360) / 8 - 90;
-                    const radius = 45;
-                    const x = 50 + radius * Math.cos((angle * Math.PI) / 180);
-                    const y = 50 + radius * Math.sin((angle * Math.PI) / 180);
-                    const isEmpty = i >= 6;
-                    
-                    return (
-                      <div
-                        key={i}
-                        className="absolute"
-                        style={{
-                          left: `${x}%`,
-                          top: `${y}%`,
-                          transform: 'translate(-50%, -50%)'
-                        }}
-                      >
-                        <div className={`w-12 h-12 rounded-full flex items-center justify-center ${
-                          isEmpty 
-                            ? 'border-2 border-dashed border-zinc-700'
-                            : 'bg-gradient-to-br from-[#10b981]/20 to-[#fbbf24]/20 border-2 border-[#10b981]/30'
-                        }`}>
-                          {!isEmpty && <Users className="w-5 h-5 text-[#10b981]" />}
-                        </div>
-                        {/* Connection line */}
-                        <svg className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none" width="200" height="200" style={{ zIndex: -1 }}>
-                          <line
-                            x1="100"
-                            y1="100"
-                            x2={100 + (x - 50) * 2}
-                            y2={100 + (y - 50) * 2}
-                            stroke={isEmpty ? '#3f3f46' : '#10b981'}
-                            strokeWidth="1"
-                            strokeDasharray={isEmpty ? '4 4' : '0'}
-                            opacity="0.3"
-                          />
-                        </svg>
-                      </div>
-                    );
-                  })}
-                </div>
-                
-                {/* Counter */}
-                <div className="text-center mt-12 pt-8 border-t border-white/10">
-                  <div className="text-3xl font-medium text-white">6 <span className="text-zinc-600">/</span> <span className="text-zinc-500">9</span></div>
-                  <div className="text-sm text-zinc-500 mt-1">Trusted Members</div>
-                </div>
-              </div>
-            </div>
-
-            {/* Right: Explanation */}
-            <div className="space-y-6">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#10b981]/10 border border-[#10b981]/20">
-                <Shield className="w-3 h-3 text-[#10b981]" />
-                <span className="text-xs font-medium text-[#10b981]">Bounded Trust</span>
-              </div>
-              <h2 className="text-4xl lg:text-5xl font-light tracking-tight">
-                Your Circle of Trust.
-                <br />
-                <span className="text-[#10b981]">Limited by Design.</span>
-              </h2>
-              <p className="text-lg text-zinc-400 leading-relaxed">
-                TrustMesh enforces a <strong className="text-white">maximum of 9 trusted contacts</strong> in your inner circle. This constraint is based on <strong className="text-white">Mark Braverman's bounded dynamical networks</strong> research at Princeton—limiting connection density creates stronger, more meaningful trust bonds.
-              </p>
               
-              <div className="space-y-4 pt-4">
-                <div className="flex items-start gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-[#10b981]/10 flex items-center justify-center flex-shrink-0 mt-1">
-                    <Shield className="w-4 h-4 text-[#10b981]" />
-                  </div>
-                  <div>
-                    <div className="text-base font-medium text-white">Choose Wisely</div>
-                    <div className="text-sm text-zinc-500 mt-0.5">Scarcity forces intentionality. Every slot matters.</div>
-                  </div>
+              <div className="bg-gradient-to-br from-emerald-600/10 to-emerald-700/5 border border-emerald-600/30 rounded-xl p-6">
+                <div className="w-10 h-10 rounded-lg bg-emerald-600/20 flex items-center justify-center mb-4">
+                  <Trophy className="w-5 h-5 text-yellow-500" />
                 </div>
-                
-                <div className="flex items-start gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-[#10b981]/10 flex items-center justify-center flex-shrink-0 mt-1">
-                    <Users className="w-4 h-4 text-[#10b981]" />
-                  </div>
-                  <div>
-                    <div className="text-base font-medium text-white">Network Protection</div>
-                    <div className="text-sm text-zinc-500 mt-0.5">Bounded trust prevents Sybil attacks and spam.</div>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-[#10b981]/10 flex items-center justify-center flex-shrink-0 mt-1">
-                    <Zap className="w-4 h-4 text-[#10b981]" />
-                  </div>
-                  <div>
-                    <div className="text-base font-medium text-white">Quality Over Quantity</div>
-                    <div className="text-sm text-zinc-500 mt-0.5">Deep trust, not shallow connections.</div>
-                  </div>
-                </div>
+                <div className="text-sm font-medium text-white mb-1">Dynamic reputation scoring</div>
+                <div className="text-xs text-zinc-500">Prove cultural capital on-chain</div>
               </div>
-
-              <div className="pt-6 border-t border-white/10">
-                <p className="text-xs text-zinc-600">
-                  Research: Braverman, M. (Princeton) · <em>Bounded Dynamical Networks</em> · Award-winning computational complexity theory
-                </p>
+              
+              <div className="bg-gradient-to-br from-purple-700/20 to-purple-500/5 border border-purple-600/40 rounded-xl p-6">
+                <div className="w-10 h-10 rounded-lg bg-purple-700/30 flex items-center justify-center mb-4">
+                  <WalletIcon className="w-5 h-5 text-purple-600" />
+                </div>
+                <div className="text-sm font-medium text-white mb-1">Tokenized value layer</div>
+                <div className="text-xs text-zinc-500">Plug-and-play cultural economy</div>
+              </div>
+              
+              <div className="bg-gradient-to-br from-emerald-600/10 to-emerald-700/5 border border-emerald-600/30 rounded-xl p-6">
+                <div className="w-10 h-10 rounded-lg bg-emerald-600/20 flex items-center justify-center mb-4">
+                  <Shield className="w-5 h-5 text-yellow-500" />
+                </div>
+                <div className="text-sm font-medium text-white mb-1">Privacy + provenance</div>
+                <div className="text-xs text-zinc-500">Your data, your identity, your ledger</div>
               </div>
             </div>
-
           </div>
         </div>
       </div>
 
-      {/* Narrative Section: Own Your Future */}
-      <div className="border-t border-white/5 bg-gradient-to-b from-[#0a0a0a] to-black">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 py-24">
-          <div className="max-w-3xl mx-auto text-center space-y-6">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#fbbf24]/10 border border-[#fbbf24]/20">
-              <Globe className="w-3 h-3 text-[#fbbf24]" />
-              <span className="text-xs font-medium text-[#fbbf24]">Built in Africa, For the World</span>
-            </div>
-            <h2 className="text-4xl lg:text-5xl font-light tracking-tight">
-              Own Your Future.
+      {/* Call to Action */}
+      <div className="border-t border-purple-700/20 bg-gradient-to-b from-[#0a0a0a] via-[#2a1050] to-[#0a0a0a]">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12 py-32">
+          <div className="max-w-3xl mx-auto text-center space-y-8">
+            <h2 className="text-5xl lg:text-7xl font-bold tracking-tight">
+              Let's move the culture
               <br />
-              <span className="text-[#10b981]">Build Without Permission.</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-700 to-emerald-700">forward — together</span>
             </h2>
-            <p className="text-lg text-zinc-400 leading-relaxed">
-              Your reputation shouldn't be locked in walled gardens. TrustMesh is an open protocol for portable credibility—build trust once, use it everywhere. Break free from platform lock-in. Your identity, your data, your sovereignty.
+            <p className="text-xl text-zinc-300">
+              Culture deserves a ledger. The Culture Wallet is it.
             </p>
-            <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
-              <div className="flex items-center gap-2 text-sm text-zinc-500">
-                <Rocket className="w-4 h-4 text-[#10b981]" />
-                <span>Upward mobility you own</span>
-              </div>
-              <div className="flex items-center gap-2 text-sm text-zinc-500">
-                <Shield className="w-4 h-4 text-[#10b981]" />
-                <span>Anti-platform, pro-human</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Developer Section: HCS-21 & HCS-22 Standards */}
-      <div className="border-t border-white/5">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 py-24">
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
-            <div className="space-y-6">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#10b981]/10 border border-[#10b981]/20">
-                <Code2 className="w-3 h-3 text-[#10b981]" />
-                <span className="text-xs font-medium text-[#10b981]">Open Standard</span>
-              </div>
-              <h2 className="text-4xl font-light tracking-tight">
-                Help Shape the Standard
-              </h2>
-              <p className="text-lg text-zinc-400 leading-relaxed">
-                TrustMesh is built on <strong className="text-white">HCS-21</strong> (Trust Signals) and <strong className="text-white">HCS-22</strong> (Identity Resolution)—proposed open standards for decentralized reputation on Hedera.
-              </p>
-              <p className="text-base text-zinc-500 leading-relaxed">
-                We need protocol designers, cryptographers, and builders to refine these specs. This is early. Your input matters.
-              </p>
-            </div>
-
-            <div className="bg-[#1a1a1a] border border-white/10 rounded-2xl p-8 space-y-6">
-              <div className="space-y-4">
-                <div className="flex items-start gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-[#10b981]/10 flex items-center justify-center flex-shrink-0">
-                    <span className="text-sm font-mono font-medium text-[#10b981]">21</span>
-                  </div>
-                  <div>
-                    <div className="text-base font-medium text-white">HCS-21: Trust Signals</div>
-                    <div className="text-sm text-zinc-500 mt-1">Immutable recognition tokens on Hedera Consensus Service</div>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-[#10b981]/10 flex items-center justify-center flex-shrink-0">
-                    <span className="text-sm font-mono font-medium text-[#10b981]">22</span>
-                  </div>
-                  <div>
-                    <div className="text-base font-medium text-white">HCS-22: Identity Resolution</div>
-                    <div className="text-sm text-zinc-500 mt-1">Bind DIDs to Hedera accounts without revealing identity</div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="pt-6 border-t border-white/5">
-                <p className="text-sm text-zinc-400 mb-4">Want to contribute?</p>
-                <a 
-                  href="https://scend.cash" 
-                  target="_blank" 
-                  rel="noopener"
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#10b981] hover:bg-[#10b981]/90 text-black font-medium text-sm transition-colors"
-                >
-                  <span>Contact Us</span>
-                  <ArrowRight className="w-4 h-4" />
-                </a>
-              </div>
+            <div className="flex items-center justify-center gap-4 pt-4">
+              <Link
+                href="/contacts"
+                className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-purple-700 to-emerald-700 hover:from-purple-600 hover:to-pink-600 text-white font-bold text-lg transition-all transform hover:scale-105"
+              >
+                <span>Enter the Culture</span>
+                <ArrowRight className="w-5 h-5" />
+              </Link>
             </div>
           </div>
         </div>
       </div>
 
       {/* Footer */}
-      <footer className="border-t border-white/5 bg-black">
+      <footer className="border-t border-purple-700/20 bg-black">
         <div className="max-w-7xl mx-auto px-6 lg:px-12 py-12">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="text-sm text-zinc-600">
-              © 2025 TrustMesh · Built on <span className="text-[#10b981]">Hedera</span> · Infrastructure by <a href="https://scend.cash" target="_blank" rel="noopener" className="text-[#fbbf24] hover:text-[#fbbf24]/80 transition-colors">Scend</a>
+              © 2025 The Culture Wallet · Built on <span className="text-purple-600">Hedera</span> · Powered by <a href="https://scend.cash" target="_blank" rel="noopener" className="text-purple-600 hover:text-purple-300 transition-colors">Scend</a>
             </div>
             <div className="flex items-center gap-6">
-              <Link href="/signals" className="text-sm text-zinc-600 hover:text-white transition-colors">Demo</Link>
-              <a href="https://scend.cash" target="_blank" rel="noopener" className="text-sm text-zinc-600 hover:text-white transition-colors">Scend</a>
+              <a href="https://twitter.com/tonycamero" target="_blank" rel="noopener" className="text-sm text-zinc-600 hover:text-purple-600 transition-colors">@tonycamero</a>
+              <a href="https://twitter.com/Web3GangGeneral" target="_blank" rel="noopener" className="text-sm text-zinc-600 hover:text-purple-600 transition-colors">@Web3GangGeneral</a>
+              <a href="https://scend.cash" target="_blank" rel="noopener" className="text-sm text-zinc-600 hover:text-purple-600 transition-colors">Scend</a>
             </div>
           </div>
         </div>

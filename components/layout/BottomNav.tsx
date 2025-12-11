@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Activity, Users, MessageCircle } from 'lucide-react'
+import { Activity, Users, MessageCircle, Circle, Zap } from 'lucide-react'
 
 export function BottomNav({
   isAuthenticated,
@@ -17,8 +17,8 @@ export function BottomNav({
   const route = (path: string) => (isAuthenticated ? path : '/onboard')
 
   const tabs = [
-    { id: 'contacts', label: 'Contacts', path: route('/contacts'), icon: Users },
-    { id: 'messages', label: 'Messages', path: route('/messages'), icon: MessageCircle },
+    { id: 'contacts', label: 'Friends', path: route('/contacts'), icon: Users },
+    { id: 'circle', label: 'Circle', path: route('/circle'), icon: Circle },
     {
       id: 'signals',
       label: 'Signals',
@@ -26,6 +26,8 @@ export function BottomNav({
       icon: Activity,
       badge: hasUnseen ? '•' : null,
     },
+    { id: 'messages', label: 'Messages', path: route('/messages'), icon: MessageCircle },
+    { id: 'boost', label: 'Boost', path: route('/boost'), icon: Zap },
   ]
 
   const isActive = (path: string) => pathname === path || pathname.startsWith(path + '/')
@@ -48,19 +50,19 @@ export function BottomNav({
                 <div className="relative">
                   <Icon
                     className={`w-5 h-5 mb-1 transition-all duration-300 ${
-                      active ? 'text-[#FF6B35] scale-110' : 'text-white/60'
+                      active ? 'text-purple-500 scale-110 drop-shadow-[0_0_8px_rgba(124,58,237,0.6)]' : 'text-white/60'
                     }`}
                   />
                   {tab.badge && (
-                    <div className="absolute -top-1 -right-1 w-2 h-2 bg-[#FF6B35] rounded-full pulse-accent" />
+                    <div className="absolute -top-1 -right-1 w-2 h-2 bg-emerald-500 rounded-full pulse-accent shadow-[0_0_8px_rgba(16,185,129,0.8)]" />
                   )}
                   {active && (
-                    <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-[#FF6B35] rounded-full" />
+                    <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-purple-500 rounded-full shadow-[0_0_4px_rgba(124,58,237,0.8)]" />
                   )}
                 </div>
                 <span
                   className={`transition-all duration-300 text-xs ${
-                    active ? 'text-[#FF6B35] font-medium' : 'text-white/60'
+                    active ? 'text-purple-500 font-bold' : 'text-white/60'
                   }`}
                 >
                   {tab.label}

@@ -57,6 +57,7 @@ export function detectLayoutMode(context: LayoutContext): LayoutMode {
   // Viral paths - public landing pages optimized for sharing
   const viralPaths = [
     '/collections',
+    '/recognition-cards',
     '/boost/',
     '/u/',  // Public profile pages
   ]
