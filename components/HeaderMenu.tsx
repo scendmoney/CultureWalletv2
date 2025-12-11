@@ -78,34 +78,12 @@ export function HeaderMenu() {
   return (
     <div className="sticky top-0 z-50 bg-black/20 backdrop-blur-md supports-[backdrop-filter]:bg-black/10 border-b border-white/10">
       <div className="max-w-2xl mx-auto px-4 py-3 flex items-center justify-between">
-          {/* Left: CultureWallet logo and branding */}
-        <div className="flex items-center gap-2">
-          {/* CultureWallet Logo */}
-          <div className="w-9 h-9 flex items-center justify-center opacity-90">
-            <svg 
-              width="24" 
-              height="24"
-              viewBox="0 0 24 24" 
-              fill="none"
-              className="animate-pulse"
-            >
-              <circle cx="12" cy="12" r="10" stroke="url(#gradient)" strokeWidth="2" fill="none"/>
-              <path d="M12 6v12M6 12h12" stroke="url(#gradient)" strokeWidth="2" strokeLinecap="round"/>
-              <defs>
-                <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#a855f7" />
-                  <stop offset="50%" stopColor="#10b981" />
-                  <stop offset="100%" stopColor="#fbbf24" />
-                </linearGradient>
-              </defs>
-            </svg>
-          </div>
-          <div>
-            <h1 className="font-bold text-xl text-white tracking-tight">Culture Wallet</h1>
-            <p className="text-xs text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-green-400 to-yellow-400 font-light">
-              Own Your World
-            </p>
-          </div>
+          {/* Left: CultureWallet branding */}
+        <div>
+          <h1 className="font-bold text-xl text-white tracking-tight">Culture Wallet</h1>
+          <p className="text-xs text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-green-400 to-yellow-400 font-light">
+            Own Your World
+          </p>
         </div>
 
         {/* Right: avatar + dropdown */}

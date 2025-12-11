@@ -284,7 +284,7 @@ export function ContactDrawer({ contactId, open, onOpenChange }: ContactDrawerPr
     <Sheet open={open} onOpenChange={onOpenChange}>
       <SheetContent 
         side="right" 
-        className="w-full sm:max-w-md bg-gradient-to-br from-[#1a0a1f] via-[#2a1030] to-[#1a0a1f] border-l border-[#7c3aed]/20 overflow-y-auto [&>button]:hidden"
+        className="w-full sm:max-w-md bg-gradient-to-br from-[#1a0a1f] via-[#2a1030] to-[#1a0a1f] border-l border-[#7c3aed]/20 overflow-y-auto"
       >
         {/* Header */}
         <SheetHeader className="border-b border-white/10 pb-4 mb-4">
