@@ -17,8 +17,7 @@ export function BottomNav({
   const route = (path: string) => (isAuthenticated ? path : '/onboard')
 
   const tabs = [
-    { id: 'contacts', label: 'Friends', path: route('/contacts'), icon: Users },
-    { id: 'circle', label: 'Circle', path: route('/circle'), icon: Circle },
+    { id: 'community', label: 'Community', path: route('/community'), icon: Users },
     {
       id: 'signals',
       label: 'Signals',
@@ -26,7 +25,6 @@ export function BottomNav({
       icon: Activity,
       badge: hasUnseen ? '•' : null,
     },
-    { id: 'messages', label: 'Messages', path: route('/messages'), icon: MessageCircle },
     { id: 'boost', label: 'Boost', path: route('/boost'), icon: Zap },
   ]
 

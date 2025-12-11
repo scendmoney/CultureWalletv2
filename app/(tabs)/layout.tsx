@@ -78,23 +78,15 @@ export default function TabsLayout({
     }
   }, [])
 
-  // CultureWallet navigation: Friends → Circle → Signals → Messages → Boost
+  // CultureWallet navigation: Community → Signals → Boost (3-Loop Compression)
   const tabs = [
     {
-      id: "contacts",
-      label: "Friends",
-      path: "/contacts",
+      id: "community",
+      label: "Community",
+      path: "/community",
       icon: Users,
       badge: null,
-      description: "Add friends"
-    },
-    {
-      id: "circle",
-      label: "Circle",
-      path: "/circle",
-      icon: Circle,
-      badge: null,
-      description: "Trust campfire"
+      description: "Trusted network"
     },
     {
       id: "signals", 
@@ -103,14 +95,6 @@ export default function TabsLayout({
       icon: Activity,
       badge: hasUnseen ? "•" : null,
       description: "Props activity"
-    },
-    {
-      id: "messages",
-      label: "Messages",
-      path: "/messages",
-      icon: MessageCircle,
-      badge: null,
-      description: "Direct messaging"
     },
     {
       id: "boost",
