@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Activity, Users, MessageCircle, Circle, Zap } from 'lucide-react'
+import { Users, Sparkles } from 'lucide-react'
 
 export function BottomNav({
   isAuthenticated,
@@ -18,14 +18,7 @@ export function BottomNav({
 
   const tabs = [
     { id: 'community', label: 'Community', path: route('/community'), icon: Users },
-    {
-      id: 'signals',
-      label: 'Signals',
-      path: route('/signals'),
-      icon: Activity,
-      badge: hasUnseen ? '•' : null,
-    },
-    { id: 'boost', label: 'Boost', path: route('/boost'), icon: Zap },
+    { id: 'culture', label: 'Culture', path: route('/culture'), icon: Sparkles },
   ]
 
   const isActive = (path: string) => pathname === path || pathname.startsWith(path + '/')
