@@ -101,7 +101,7 @@ export function HeaderMenu() {
             </svg>
           </div>
           <div>
-            <h1 className="font-bold text-xl text-white tracking-tight">The Culture Wallet</h1>
+            <h1 className="font-bold text-xl text-white tracking-tight">Culture Wallet</h1>
             <p className="text-xs text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-green-400 to-yellow-400 font-light">
               Own the Culture
             </p>
