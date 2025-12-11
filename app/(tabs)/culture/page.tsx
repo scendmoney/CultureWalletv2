@@ -39,10 +39,14 @@ export default function CulturePage() {
             </div>
           </div>
 
-          <RecognitionFeed 
-            filter={filter} 
-            onFilterChange={setFilter}
-          />
+          {/* Scrollable feed container with max height */}
+          <div className="max-h-[400px] overflow-y-auto scrollbar-thin scrollbar-thumb-white/20 scrollbar-track-transparent hover:scrollbar-thumb-white/30 pr-2">
+            <RecognitionFeed 
+              filter={filter} 
+              onFilterChange={setFilter}
+              maxItems={10}
+            />
+          </div>
         </div>
 
         {/* My Collectibles */}
