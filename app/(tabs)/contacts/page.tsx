@@ -13,6 +13,7 @@ import { ContactProfileSheet } from '@/components/ContactProfileSheet'
 import { SendSignalsModal } from '@/components/SendSignalsModal'
 import { useRemainingMints } from '@/lib/hooks/useRemainingMints'
 import { InnerCircleDrawer } from '@/components/InnerCircleDrawer'
+import { ContactDrawer } from '@/components/contacts/ContactDrawer'
 import { 
   Search,
   MessageCircle,
@@ -36,6 +37,8 @@ export default function ContactsPage() {
   const [showRecognitionModal, setShowRecognitionModal] = useState(false)
   const [recognitionRecipient, setRecognitionRecipient] = useState<{ accountId: string; handle?: string } | null>(null)
   const [showInnerCircle, setShowInnerCircle] = useState(false)
+  const [drawerContactId, setDrawerContactId] = useState<string | null>(null)
+  const [drawerOpen, setDrawerOpen] = useState(false)
   
   // Mint counter hook
   const { loading: mintsLoading, remainingMints, trstBalance, cost, needsTopUp } = useRemainingMints(sessionId)
@@ -142,8 +145,9 @@ export default function ContactsPage() {
   )
 
   const handleContactClick = (contact: BondedContact) => {
-    setSelectedPeerId(contact.peerId || null)
-    setSelectedContact(contact)
+    // Open the new ContactDrawer instead of ContactProfileSheet
+    setDrawerContactId(contact.peerId || null)
+    setDrawerOpen(true)
   }
 
   // Calculate Inner Circle stats
@@ -322,7 +326,7 @@ export default function ContactsPage() {
               </div>
             ) : (
               filteredContacts.map((contact) => {
-                const contactId = contact.peerId || contact.id
+                const contactId = contact.peerId
                 const trustData = trustLevels.get(contactId || '') || { allocatedTo: 0, receivedFrom: 0 }
                 const displayName = contact.handle || `User ${contactId?.slice(-6) || 'Unknown'}`
                 const isBonded = contact.isBonded !== false // Default to true for backward compatibility
@@ -413,8 +417,15 @@ export default function ContactsPage() {
         )}
       </div>
 
-      {/* Contact Profile Sheet */}
-      {selectedContact && (
+      {/* Contact Drawer - New UX */}
+      <ContactDrawer
+        contactId={drawerContactId}
+        open={drawerOpen}
+        onOpenChange={setDrawerOpen}
+      />
+      
+      {/* Legacy Contact Profile Sheet (kept for backwards compatibility) */}
+      {selectedContact && !drawerOpen && (
         <ContactProfileSheet
           peerId={selectedPeerId}
           contactHandle={selectedContact.handle}
