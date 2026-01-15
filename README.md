@@ -3,8 +3,10 @@
 
 > **CultureWallet is the inception skin.** This repository follows the [Canonical Inception Core](CANONICAL_CORE.md), the immutable architectural doctrine for the TrustMesh platform.
 
-
-TrustMesh is a multiplayer trust-building platform that turns relationship management into engaging gameplay while creating real economic value. Built on Hedera's HCS for transparency and scalability, it's designed to be the social engagement layer for trust-based commerce ecosystems.
+## 📜 Doctrine
+- [Canonical Inception Core](CANONICAL_CORE.md) - Immutable doctrine lock (v0.1.0-inception)
+- [Trust Gated Payments](TRUST_GATED_PAYMENTS.md) - Financial and trust relationship bridge
+- [Technical Documentation](./docs/README.md) - Engineering-level guides and specs
 
 **Think: Pokémon GO meets LinkedIn meets actual money.**
 

@@ -1,0 +1,112 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "world.meta@1.1",
+    "title": "World Meta Event v1.1",
+    "description": "Defines the core metadata for a World. V1.1 adds revision/prevEventId for deterministic causal ordering.",
+    "type": "object",
+    "properties": {
+        "appId": {
+            "type": "string",
+            "const": "culturewallet"
+        },
+        "type": {
+            "type": "string",
+            "const": "WORLD_META"
+        },
+        "version": {
+            "type": "integer",
+            "const": 1
+        },
+        "eventId": {
+            "type": "string",
+            "description": "Unique, monotonic identifier for this event. Format: {worldId}:meta:{op}:{timestamp}"
+        },
+        "worldId": {
+            "type": "string",
+            "description": "The unique ID of the world this event belongs to."
+        },
+        "issuerAccountId": {
+            "type": "string",
+            "description": "Hedera Account ID of the authorized issuer."
+        },
+        "clientTs": {
+            "type": "integer",
+            "description": "Client-side timestamp (ms)."
+        },
+        "revision": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "[NEW v1.1] Monotonic revision number for this World's metadata state. 1 = Genesis."
+        },
+        "prevEventId": {
+            "type": "string",
+            "description": "[NEW v1.1] Hash pointer to the immediately preceding eventId. null for Genesis."
+        },
+        "payload": {
+            "type": "object",
+            "properties": {
+                "schema": {
+                    "type": "string",
+                    "const": "world.meta@1"
+                },
+                "op": {
+                    "type": "string",
+                    "enum": [
+                        "CREATE",
+                        "UPDATE",
+                        "FREEZE"
+                    ]
+                },
+                "profile": {
+                    "type": "object",
+                    "properties": {
+                        "name": {
+                            "type": "string"
+                        },
+                        "type": {
+                            "type": "string"
+                        },
+                        "description": {
+                            "type": "string"
+                        },
+                        "visibility": {
+                            "enum": [
+                                "PUBLIC",
+                                "PRIVATE",
+                                "GATED"
+                            ]
+                        },
+                        "cover_art_url": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "name",
+                        "type"
+                    ]
+                }
+            },
+            "required": [
+                "schema",
+                "op",
+                "profile"
+            ]
+        },
+        "contentHash": {
+            "type": "string",
+            "description": "SHA-256 hash of the canonicalized event payload."
+        }
+    },
+    "required": [
+        "appId",
+        "type",
+        "version",
+        "eventId",
+        "worldId",
+        "issuerAccountId",
+        "clientTs",
+        "revision",
+        "payload",
+        "contentHash"
+    ]
+}

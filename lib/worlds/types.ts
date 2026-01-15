@@ -1,106 +1,91 @@
 /**
- * World Studio Type Definitions
+ * World Studio Types (Canon-safe v1)
  * 
- * Defines the core data structures for Worlds, localized signals, and HCS envelopes.
- * Evolves from Issuer Studio types to support "World" scoping.
+ * Defines the HCS envelope structures for World interactions.
+ * Refined for Phase 1A (Idempotency, Ledger-verifiability).
  */
-
-export type WorldTopicType = 'WORLD_META' | 'WORLD_CONTENT' | 'WORLD_SIGNAL' | 'WORLD_MEMBERSHIP'
 
 export interface WorldProfile {
     name: string
+    type: 'Artist' | 'Label' | 'Brand' | 'Community' // Restricted types for MVP
     description?: string
-    type: 'ARTIST' | 'LABEL' | 'BRAND' | 'COMMUNITY' | 'OTHER'
-    coverArtUrl?: string // Check KiloScribe compatibility
+    coverArt?: string
     visibility: 'PUBLIC' | 'PRIVATE'
-}
-
-export interface WorldAsset {
-    id: string
-    title: string
-    description?: string
-    type: 'IMAGE' | 'AUDIO' | 'VIDEO'
-    url: string
-    hash: string // Content hash
-    status: 'Draft' | 'Inscribed'
-}
-
-export interface WorldPass {
-    id: string
-    name: string
-    supply: number
-    minted: number
-    description?: string
-    image?: string
-    status: 'Draft' | 'Minted'
 }
 
 export interface WorldDrop {
     id: string
     name: string
-    type: 'AUDIO' | 'VIDEO' | 'ACCESS_PASS' | 'DIGITAL_ART'
-    description?: string
-    mediaUrl?: string
-    totalSupply?: number
-    requirements?: {
-        action: 'INVITE' | 'FOLLOW' | 'ATTEND' | 'NONE'
-        count?: number
-    }
+    type: string
+    requirements: string
 }
 
-// --- HCS Envelopes ---
+// --- Payloads ---
 
-// Base Envelope specific to World context
-export interface WorldEnvelope<T = any> {
-    type: WorldTopicType
-    worldId: string
-    from: string // Issuer DID
-    nonce: number
-    ts: number
-    payload: T
-}
-
-// Payload for WORLD_META topics
 export interface WorldMetaPayload {
-    t: 'world.meta@1'
+    schema: 'world.meta@1' // Renamed from 't'
     op: 'CREATE' | 'UPDATE'
     profile: WorldProfile
 }
 
-// Payload for WORLD_CONTENT topics (Media/KiloScribe pattern)
 export interface WorldContentPayload {
-    t: 'world.content@1'
-    content_id: string
-    mime_type: string
-    url: string // IPFS or external
-    hash?: string // Content integrity
+    schema: 'world.content@1'
+    asset: {
+        filename: string
+        mime_type: string
+        size_bytes: number
+        file_sha256?: string
+    }
+    urls: {
+        file_url: string
+        json_file_url: string
+    }
+    inscription: {
+        provider: 'kiloscribe' | 'hcs_only'
+        id: string | null
+    }
 }
 
-// Payload for WORLD_SIGNAL topics (Drops/Recognition)
 export interface WorldSignalPayload {
-    t: 'world.signal@1'
-    signal_type: 'DROP_ANNOUNCE' | 'RECOGNITION'
-    target_id?: string // Drop ID or User DID
+    schema: 'world.signal@1'
+    signal_type: 'DROP_ANNOUNCE' | 'MEMBER_JOIN'
+    target_id: string
     data: any
 }
 
-// --- API Responses ---
+export interface WorldPassPayload {
+    schema: 'world.pass@1'
+    pass: {
+        id: string
+        name: string
+        description?: string
+        supply: {
+            type: 'FINITE' | 'INFINITE'
+            cap?: number
+        }
+        image_url?: string
+        status: 'ACTIVE' | 'DRAFT'
+    }
+}
+
+// --- Envelope ---
+
+export interface WorldEnvelope<T = any> {
+    appId: 'culturewallet' // Canonical App ID
+    type: 'WORLD_META' | 'WORLD_CONTENT' | 'WORLD_SIGNAL' | 'WORLD_PASS'
+    version: 1
+    eventId: string         // Deterministic: worldId:type:op:ts
+    worldId: string
+    issuerAccountId: string // Renamed from 'from'
+    clientTs: number        // Renamed from 'ts' (ms)
+    revision: number        // Monotonic state revision (Tashi Alignment)
+    payload: T
+    contentHash?: string    // Computed on server
+}
 
 export interface WorldSubmitResponse {
     success: boolean
     topicId?: string
-    sequenceNumber?: string
-    consensusTimestamp?: string
-    transactionId?: string
-    error?: string
-}
-
-export interface SubmittedWorldEvent {
-    id: string
-    timestamp: string
-    worldId: string
-    type: WorldTopicType
-    status: 'pending' | 'confirmed' | 'failed'
     sequenceNumber?: string
     consensusTimestamp?: string
     transactionId?: string

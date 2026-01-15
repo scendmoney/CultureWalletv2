@@ -1,0 +1,85 @@
+sequenceDiagram
+  autonumber
+  participant U as User (Creator)
+  participant UI as World Studio / Culture Wallet (Client)
+  participant X as XMTP Thread (Speech)
+  participant AR as Agent Runtime (Interpreter)
+  participant TM as TrustMesh (Authority)
+  participant B as tm-binding-core (Binding)
+  participant T as Tashi Worlds (Truth)
+  participant DB as Neon DB (Operational)
+  participant H as Hedera HCS (Public Proof)
+  participant F as FoxMQ (Private/PII)
+
+  Note over X,T: Constitutional Rule: XMTP = Speech (intent). Tashi = Truth (state). TrustMesh = Authority (legitimacy).
+
+  %% -------------------------
+  %% 0) Identity / Binding (one-time or periodic assurance)
+  %% -------------------------
+  U->>UI: Sign in / open World Studio
+  UI->>B: ensureBinding(hederaAcct, xmtpAddr, worldId)
+  B-->>TM: bindingCreatedOrVerified(subjectId, worldId)
+  TM-->>B: OK (subjectId, roles baseline)
+  B-->>UI: OK (subjectId)
+
+  %% -------------------------
+  %% 1) Intent expressed via XMTP (Speech)
+  %% -------------------------
+  U->>UI: Fill pass form + click "Mint Pass (Preview)"
+  UI->>X: Send intent message / command envelope (WORLD_PASS_MINT_REQUEST)
+  Note over X: XMTP carries intent only. No state is created here.
+
+  %% -------------------------
+  %% 2) Interpretation + Authorization (Authority)
+  %% -------------------------
+  X->>AR: Inbound message event
+  AR->>TM: authorizeMintPass(subjectId, worldId)
+  TM-->>AR: ALLOW (WORLD_ADMIN | PASS_ISSUER)
+
+  %% -------------------------
+  %% 3) Deterministic State Transition (Truth)
+  %% -------------------------
+  AR->>T: applyEvent(WORLD_PASS_MINTED@v1)
+  T-->>AR: State updated (passId, status=ACTIVE)
+
+  %% -------------------------
+  %% 4) Operational Persistence (UX Fast Path)
+  %% -------------------------
+  AR->>DB: upsert world_passes (idempotent by eventId or worldId+name)
+  DB-->>AR: OK (rowId, timestamps)
+
+  %% -------------------------
+  %% 5) Public Proof Anchor (Non-PII Memory)
+  %% -------------------------
+  AR->>H: submit WORLD_PASS envelope (meta topic)
+  H-->>AR: receipt (topicId, sequence)
+  AR->>DB: update world_passes with (hcs_topic_id, hcs_sequence)
+  DB-->>AR: OK
+
+  %% -------------------------
+  %% 6) Private Trail (PII / Telemetry)
+  %% -------------------------
+  AR->>F: log audit/trace (issuer device, UI telemetry, internal notes)
+  F-->>AR: OK
+
+  %% -------------------------
+  %% 7) Confirmation back to Speech (Notify)
+  %% -------------------------
+  AR->>X: Send confirmation message
+  X-->>UI: "Pass is Active on World State"
+  UI-->>U: Pass appears in Active Passes list
+
+  %% -------------------------
+  %% 8) Failure Modes (Constitution-preserving)
+  %% -------------------------
+  alt HCS submit fails
+    AR->>DB: mark hcs_status=FAILED (retain state truth + DB record)
+    AR->>X: Notify: "Pass active&#59; proof pending"
+  else DB write fails after HCS success
+    AR->>F: log reconciliation task with receipt
+    AR->>X: Notify: "Pass active&#59; syncing record"
+  else Authorization fails
+    AR->>X: Reject: "Not authorized to mint passes for this world"
+  end
+
+  Note over U,UI: Result: World is correct even if XMTP history is lost (Truth lives in Tashi + Proof in HCS).

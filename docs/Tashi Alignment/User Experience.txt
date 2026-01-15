@@ -1,0 +1,67 @@
+flowchart LR
+  %% ============================
+  %% CULTURE WALLET USER VIEW
+  %% ============================
+
+  subgraph USER["Culture Wallet User"]
+    U["User"]
+    UM["User Mental Model<br/>I'm in a World<br/>I can speak<br/>I can earn access<br/>I hold proof"]
+  end
+
+  subgraph APP["Culture Wallet (Client UX)"]
+    HOME["Home Feed<br/>World updates + prompts"]
+    CHAT["Chat<br/>DMs + Groups"]
+    VAULT["Vault<br/>Passes • Drops • Proof"]
+    ACTIONS["Actions<br/>Claim • Send • React • Signal"]
+  end
+
+  subgraph SPEECH["Speech Layer"]
+    XMTP["XMTP Inbox<br/>(private messages)"]
+  end
+
+  subgraph TRUTH["Truth Layer"]
+    TASHI["Tashi Worlds<br/>(shared reality/state)"]
+  end
+
+  subgraph AUTH["Authority Layer"]
+    TM["TrustMesh<br/>(identity • roles • entitlements • recognition)"]
+  end
+
+  subgraph MEMORY["Memory + Value"]
+    HCS["Hedera HCS<br/>(public non-PII proof anchors)"]
+    TRST["TRST Rails<br/>(rewards/payouts when enabled)"]
+  end
+
+  subgraph PRIVATE["Private Layer"]
+    FOX["FoxMQ<br/>(PII • consent • telemetry • private audit)"]
+  end
+
+  %% User enters the app
+  U --> APP
+  UM --- HOME
+  UM --- CHAT
+  UM --- VAULT
+
+  %% What user sees
+  HOME <--> TASHI
+  VAULT <--> TASHI
+  ACTIONS --> TM
+
+  %% Speaking and coordination
+  CHAT <--> XMTP
+  XMTP --> TM
+  TM --> TASHI
+
+  %% Proof and permanence (user-facing "receipts")
+  TM --> HCS
+  TASHI --> HCS
+  TM --> TRST
+
+  %% Private data stays private
+  APP --> FOX
+
+  %% Key perception overlays
+  HOME -. "feels like: world is live" .-> TASHI
+  CHAT -. "feels like: private convo" .-> XMTP
+  VAULT -. "feels like: my stuff" .-> TM
+  VAULT -. "feels like: permanent proof" .-> HCS

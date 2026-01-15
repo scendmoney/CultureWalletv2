@@ -1,0 +1,156 @@
+flowchart TB
+  %% =========================================================
+  %% THE CONSTITUTION / CONSTELLATION (XMTP ? Worlds ? TrustMesh)
+  %% =========================================================
+
+  %% ---------------------------
+  %% CLIENT SURFACES (Views)
+  %% ---------------------------
+  subgraph CLIENTS["Client Surfaces — Speech + UX"]
+    CW[Culture Wallet / Scend Messenger]
+    WS["World Studio ( /studio/[worldId] )"]
+    AD[Agent Consoles / Admin Dashboards]
+    YW[Campus / Youth / Civic Apps]
+  end
+
+  %% ---------------------------
+  %% XMTP (Speech Layer)
+  %% ---------------------------
+  subgraph XMTP_LAYER["XMTP — Communication Fabric (Speech)"]
+    XNET["XMTP Network<br/>DMs • Groups • Threads"]
+    XID["XMTP Identity<br/>(wallet-native inbox)"]
+  end
+
+  %% ---------------------------
+  %% TRUSTMESH (Authority Layer)
+  %% ---------------------------
+  subgraph TM["TrustMesh — Authority (Legitimacy + Entitlements)"]
+    BIND["tm-binding-core<br/>Identity Binding Service<br/>(Hedera ? XMTP ? TM Subject ? worldId)"]
+    ID[Identity + Subject Registry]
+    ENT["Entitlement Engine<br/>(World Roles / Permissions)"]
+    TG["Trust Graph<br/>(Circle of 9, recognition, revocation)"]
+    API["TrustMesh APIs<br/>(bind, entitlements, recognition, events)"]
+  end
+
+  %% ---------------------------
+  %% WORLD STATE (Truth Layer)
+  %% ---------------------------
+  subgraph WORLDS["Tashi Worlds — Deterministic Shared State (Truth)"]
+    WMAP["World Routing<br/>(worldId ? world engine / topics)"]
+    STATE["World State Machines<br/>Rooms • Membership • Missions • Governance"]
+    SNAP["State Snapshots<br/>(derived views for clients/agents)"]
+  end
+
+  %% ---------------------------
+  %% PRIVATE MESH (Privacy Layer)
+  %% ---------------------------
+  subgraph FOX["FoxMQ — Private Event + PII Mesh (Privacy)"]
+    PII["PII / Onboarding Data<br/>(consent, device, KYC metadata)"]
+    TEL["Telemetry / Traces<br/>(agent behavior, audit trails)"]
+    PRIVBUS["Encrypted Private Channels<br/>(agent?agent coordination)"]
+  end
+
+  %% ---------------------------
+  %% LEDGER + RAILS (Memory/Value)
+  %% ---------------------------
+  subgraph LEDGER["Hedera — Public Integrity + Value Rails (Memory + Settlement)"]
+    HCS["HCS Topics<br/>(non-PII proofs, public event integrity)"]
+    TRST["TRST Rails<br/>(incentives, rewards, payouts)"]
+  end
+
+  %% ---------------------------
+  %% DATA STORES (Operational)
+  %% ---------------------------
+  subgraph DATA["Operational Storage (Fast Reads / UX)"]
+    NEON["Neon Postgres<br/>(world_passes, assets, profiles, indexes)"]
+    OBJ["Object Storage<br/>(files, images, media refs)"]
+  end
+
+  %% ---------------------------
+  %% AGENT RUNTIME (Central Brain)
+  %% ---------------------------
+  subgraph AGENTS["TrustMesh Agent Runtime (Interpreters / Executors)"]
+    AR["Agent Runtime<br/>(role resolver, provider router)"]
+    SAFETY["Safety Modes<br/>Observer • Editor • Actor"]
+    TOOLS["Tooling<br/>HCS submit/read • DB writes • World queries"]
+  end
+
+  %% =========================================================
+  %% CONSTITUTIONAL PRINCIPLES (WIRING)
+  %% =========================================================
+
+  %% Identity / binding
+  CW --> XID
+  WS --> XID
+  YW --> XID
+  AD --> XID
+
+  XID --> BIND
+  BIND --> ID
+  ID --> ENT
+  ID --> TG
+
+  %% Speech / intent (XMTP is NOT truth)
+  CW --> XNET
+  WS --> XNET
+  YW --> XNET
+  AD --> XNET
+
+  %% XMTP events into runtime
+  XNET --> AR
+
+  %% Runtime requests authority + context
+  AR --> API
+  API --> ENT
+  API --> TG
+  API --> ID
+
+  %% World routing + deterministic updates
+  AR --> WMAP
+  WMAP --> STATE
+  STATE --> SNAP
+
+  %% State confirmations / notifications back to XMTP
+  SNAP --> AR
+  AR --> XNET
+
+  %% Privacy: sensitive events + traces stay private
+  AR --> PRIVBUS
+  WS --> PII
+  CW --> PII
+  PRIVBUS --> TEL
+
+  %% Ledger: non-PII proofs + integrity anchors
+  API --> HCS
+  STATE --> HCS
+
+  %% Incentives (optional/phase-based)
+  TG --> TRST
+  ENT --> TRST
+
+  %% Operational persistence for UX
+  WS --> NEON
+  CW --> NEON
+  API --> NEON
+  API --> OBJ
+  WS --> OBJ
+
+  %% HCS receipts/audit refs can be stored operationally
+  HCS --> NEON
+
+  %% =========================================================
+  %% ANNOTATIONS (MENTAL MODEL)
+  %% =========================================================
+  classDef speech fill:#1f2a44,stroke:#7aa2ff,stroke-width:1px,color:#eaf1ff;
+  classDef authority fill:#1f3a2a,stroke:#6ee7b7,stroke-width:1px,color:#eafff5;
+  classDef truth fill:#2a1f3a,stroke:#c4b5fd,stroke-width:1px,color:#f5f3ff;
+  classDef privacy fill:#3a2a1f,stroke:#fbbf24,stroke-width:1px,color:#fff7ed;
+  classDef ledger fill:#3a1f1f,stroke:#fb7185,stroke-width:1px,color:#fff1f2;
+  classDef data fill:#1f3a3a,stroke:#22d3ee,stroke-width:1px,color:#ecfeff;
+
+  class XNET,XID speech;
+  class BIND,ID,ENT,TG,API authority;
+  class WMAP,STATE,SNAP truth;
+  class PII,TEL,PRIVBUS privacy;
+  class HCS,TRST ledger;
+  class NEON,OBJ data;

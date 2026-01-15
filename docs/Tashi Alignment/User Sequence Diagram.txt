@@ -1,0 +1,86 @@
+sequenceDiagram
+  autonumber
+  actor U as Culture Wallet User
+  participant UI as Culture Wallet (Client)
+  participant X as XMTP Inbox (Speech)
+  participant TM as TrustMesh (Authority)
+  participant T as Tashi Worlds (Truth)
+  participant DB as App DB (Neon)
+  participant H as Hedera HCS (Public Proof)
+  participant F as FoxMQ (Private/PII)
+
+  Note over U,UI: User POV Constitution: Chat = Speech, World = Reality, Vault = What I Hold, Proof = Permanent Memory
+
+  %% -------------------------
+  %% 0) Enter World (User Experience)
+  %% -------------------------
+  U->>UI: Open a World (worldId)
+  UI->>T: fetchSnapshot(worldId, userId/subjectId)
+  T-->>UI: World snapshot (rooms, passes, prompts, state)
+  UI-->>U: Home renders “What’s live” + “What I can access”
+
+  %% -------------------------
+  %% 1) User Speaks (Chat)
+  %% -------------------------
+  U->>UI: Send message / react / command in chat
+  UI->>X: Send XMTP message
+  X-->>UI: Delivered (encrypted)
+  UI-->>U: Message appears instantly (private speech)
+
+  %% -------------------------
+  %% 2) World-Driven Prompts (User sees world as reality)
+  %% -------------------------
+  T-->>UI: World event update (e.g., new drop, new mission, new pass available)
+  UI-->>U: Home shows update card (“New access available”)
+
+  %% -------------------------
+  %% 3) User Attempts an Action (Entitlement-Gated)
+  %% -------------------------
+  U->>UI: Tap “Claim / Request Access / Join Room”
+  UI->>TM: authorizeAction(subjectId, worldId, actionType)
+  alt Not authorized
+    TM-->>UI: DENY + reason code
+    UI-->>U: Clear UX response (locked state + why)
+  else Authorized
+    TM-->>UI: ALLOW + grant context
+    UI->>T: applyAction(worldId, subjectId, actionType)
+    T-->>UI: State updated (membership/entitlement reflected)
+    UI-->>U: UI updates immediately (unlocked access)
+  end
+
+  %% -------------------------
+  %% 4) “Vault Update” (What I Hold)
+  %% -------------------------
+  UI->>DB: upsert user_view_state (cached entitlements, vault items)
+  DB-->>UI: OK
+  UI-->>U: Vault shows new item / access badge
+
+  %% -------------------------
+  %% 5) Proof Anchor (Permanent Memory)
+  %% -------------------------
+  Note over TM,H: Non-PII proof only (no sensitive user data)
+  TM->>H: submit proof envelope (optional per action)
+  H-->>TM: receipt (topicId, sequence)
+  TM->>DB: record proof ref (topicId, sequence, eventId)
+  DB-->>TM: OK
+
+  %% -------------------------
+  %% 6) Private Trail (Consent / Telemetry)
+  %% -------------------------
+  UI->>F: log private audit/telemetry (device, consent, UX trace)
+  F-->>UI: OK
+
+  %% -------------------------
+  %% 7) Notifications Back to the User (Speech + Updates)
+  %% -------------------------
+  T-->>UI: state-change notification payload
+  UI->>X: (optional) XMTP notification message to user thread
+  X-->>UI: Delivered
+  UI-->>U: “Confirmed” + world UI reflects truth
+
+  %% -------------------------
+  %% 8) Resilience Guarantees (User Trust)
+  %% -------------------------
+  Note over U,T: If chat history is lost, World + Vault can be rebuilt from Tashi + DB + proofs.
+  Note over U,X: XMTP is private speech, not the source of truth.
+  Note over U,H: HCS is permanent memory (proof), not private data.

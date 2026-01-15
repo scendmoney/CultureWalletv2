@@ -1,3 +1,4 @@
+// STUDIO_UI_FROZEN (World Studio MVP)
 /**
  * World Editor Page
  * Route: /studio/[worldId]
@@ -49,7 +50,7 @@ export default function WorldEditorPage() {
             case 'assets':
                 return <AssetManager />
             case 'passes':
-                return <PassManager />
+                return <PassManager worldId={worldId} issuerId="0.0.12345" />
             case 'signals':
                 return (
                     <div className="p-12 text-center text-gray-500 border border-dashed border-gray-800 rounded-xl bg-gray-900/50">
@@ -74,7 +75,7 @@ export default function WorldEditorPage() {
             // 1. Build HCS-5 Envelope
             const envelope = buildWorldMetaEnvelope(
                 worldId,
-                '0.0.mock-issuer', // TODO: Get from Auth
+                '0.0.12345', // Mock Issuer ID (Passes regex validation)
                 {
                     name: worldData.name,
                     type: worldData.type as any,
