@@ -34,11 +34,30 @@ This document defines the rules for managing, versioning, and modifying the plat
 - Normal Git flow applies.
 - Commit messages should still be descriptive but do not require specific prefixes.
 
-## 3. Versioning & Tagging
+## 3. Versioning & Tagging (Release Cadence)
 
-- **Inception Tag**: `v0.1.0-inception` (The root of the doctrine layer).
-- **Amendment Tags**: `v0.1.0-doctrine.X` (Sequential numbering for locked changes).
-- **Major Milestone**: Increment minor version (e.g., `v0.2.0-inception`).
+Doctrine versions follow the convention: `vMAJOR.MINOR.PATCH-doctrine`.
+
+| Level | Increment Rule |
+| :--- | :--- |
+| **MAJOR** | Foundational shifts in protocol truth or governance (rare). |
+| **MINOR** | New doctrine documents or ratified extensions. |
+| **PATCH** | Clarifications, non-semantic edits, or formatting updates. |
+
+### Tagging Rules
+- Every doctrine release requires an associated governance ticket reference (e.g., `CW-GOV-XXX`).
+- Tags must be immutable (no moving tags once released).
+- **Inception**: `v0.1.0-inception`
+- **Amendments**: `v0.1.0-doctrine.X` (Legacy) or `v0.1.0-doctrine.X.Y` (Standard compliance).
+
+## 4. Pre-PR Doctrine Compliance Gate
+
+All Pull Requests (human or agent) must affirm compliance with the following checklist. PRs failing these checks are blocked until governance resolution.
+
+**Compliance Checklist:**
+1. ✅ **No Contradiction**: Does this change contradict any root-level doctrine document? (Target: No)
+2. ✅ **Economic Integrity**: Does this alter economics, trust flows, or authority boundaries? (Target: No, unless authorized)
+3. ✅ **Authorized Amendment**: If the above are 'Yes', is there an approved and referenced `CW-GOV` ticket? (Target: Yes)
 
 ---
 *Follow these rules to ensure architectural integrity and auditability.*
@@ -70,3 +89,23 @@ This document defines the rules for managing, versioning, and modifying the plat
 6. **Agents Are Bound**
    Any AI agent, automation, or coding assistant operating in this repository is governed by root doctrine first, tooling second.
    Agents may not infer, invent, or override doctrine.
+
+---
+
+## 🏗️ Agent Charter (Binding Appendix)
+
+This charter defines the operational boundaries for all AI agents, automations, and coding assistants operating within this repository.
+
+### A. Agents MAY:
+- Implement technical changes, features, and UI/UX improvements aligned with doctrine.
+- Refactor, optimize, and document existing implementations.
+- Propose governance changes by initiating new `CW-GOV` tickets in the task buffer.
+- Perform audit and verification tasks for doctrine compliance.
+
+### B. Agents MAY NOT:
+- **Invent Doctrine**: Agents cannot declare new "truth" or purpose outside of existing documentation.
+- **Reinterpret Rules**: Agents cannot override or redefine economics, trust rules, or governance tiering.
+- **Bypass Gates**: Agents cannot merge or push changes that explicitly fail the Doctrine Compliance Gate.
+- **Silence Contradictions**: Agents must flag conflicts between technical requirements and root doctrine immediately.
+
+*All agents operate under **Doctrine Supremacy** at all times. Failure to comply is a blocking failure.*
