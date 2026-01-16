@@ -42,3 +42,31 @@ This document defines the rules for managing, versioning, and modifying the plat
 
 ---
 *Follow these rules to ensure architectural integrity and auditability.*
+
+## 🔒 Governance Invariants (Binding)
+
+The following governance invariants are **non-negotiable** and apply to all future contributors, pull requests, automation, and AI agents operating within this repository.
+
+1. **Doctrine Supremacy**
+   Root-level doctrine documents define intent, authority, and meaning.
+   Content under `/docs` may describe *implementation*, but may not redefine *purpose*, *economics*, or *governance*.
+
+2. **Immutability Rules**
+   `CANONICAL_CORE.md` is immutable by definition.
+   Any modification to root doctrine files requires an explicit governance ticket (`CW-GOV-XXX`) and documented approval.
+
+3. **Inception Skins Are Derivative**
+   Inception skins (e.g., CultureWallet) are reference implementations only.
+   They do **not** define protocol truth, roadmap authority, or economic rules.
+
+4. **No Technical Contradictions**
+   No technical change may introduce logic, flows, or economics that contradict doctrine.
+   If a conflict arises, doctrine must be resolved first—*before* implementation proceeds.
+
+5. **Trust-Gated Economics Are Canonical**
+   Payments, stipends, boosts, and tips must respect trust gates and defined value flows.
+   Bypass paths, shadow mechanics, or implicit overrides are prohibited.
+
+6. **Agents Are Bound**
+   Any AI agent, automation, or coding assistant operating in this repository is governed by root doctrine first, tooling second.
+   Agents may not infer, invent, or override doctrine.
