@@ -45,7 +45,7 @@ This document defines the rules for managing, versioning, and modifying the plat
 
 ## 🔒 Governance Invariants (Binding)
 
-The following governance invariants are **non-negotiable** and apply to all future contributors, pull requests, automation, and AI agents operating within this repository.
+> **RATIFIED via CW-GOV-004**. These invariants are non-negotiable and apply to all future contributors, pull requests, automation, and AI agents operating within this repository.
 
 1. **Doctrine Supremacy**
    Root-level doctrine documents define intent, authority, and meaning.
