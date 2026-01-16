@@ -5,6 +5,7 @@
 
 ## 📜 Doctrine
 - [Canonical Inception Core](CANONICAL_CORE.md) - Immutable doctrine lock (v0.1.0-inception)
+- [Governance](GOVERNANCE.md) - Doctrine change control and versioning policy
 - [Trust Gated Payments](TRUST_GATED_PAYMENTS.md) - Financial and trust relationship bridge
 - [Technical Documentation](./docs/README.md) - Engineering-level guides and specs
 
